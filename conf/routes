@@ -14,5 +14,18 @@ GET	/logout				controllers.Application.logout
 GET	/regis 				controllers.Application.regis
 POST	/regis 				controllers.Application.register
 
+#Criteria
+GET 	/criteria  					controllers.CriteriaController.criteria()
+POST	/criteria 					controllers.CriteriaController.newCriteria()
+POST	/criteria/:id/delete		controllers.CriteriaController.deleteCriteria(id: Integer)
+
+#Project
+GET		/project 			controllers.ProjectController.projects()
+POST	/project 			controllers.ProjectController.addProject()
+POST	/project/:id/delete controllers.ProjectController.deleteProject(id:Long)
+
+# Vote
+GET		/vote 				controllers.VoteController.vote()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               	controllers.Assets.at(path="/public", file)
