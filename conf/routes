@@ -3,12 +3,12 @@
 # ~~~~
 
 # Home page
-#GET	/home 				controllers.Application.home
+GET	/ 				controllers.Home.home
 
 # Authentication
-GET     /	                      	controllers.Application.redirectToLogin
 GET	/login 				controllers.Application.login
 POST	/login				controllers.Application.authenticate
+GET	/logout				controllers.Application.logout
 
 # Registeration
 GET	/regis 				controllers.Application.regis

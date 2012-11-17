@@ -61,7 +61,7 @@ public class Application extends Controller {
             		return badRequest(login.render(loginForm));
         	} else {
             		session("username", loginForm.get().username);
-            		return TODO;
+            		return redirect(routes.Home.home());
         	}
     	}
 
@@ -71,7 +71,7 @@ public class Application extends Controller {
    	    public static Result logout() {
         	session().clear();
         	flash("success", "You've been logged out");
-        	return TODO;
+            return redirect(routes.Application.login());
     	}
 
     	/**
@@ -96,12 +96,4 @@ public class Application extends Controller {
     		}	
     	}
 
-    	public static Result redirectToLogin() {
-    		return redirect(routes.Application.login());	
-    	}
-
-        /*public static Result home() {
-            return ok(home.render()); 
-        }*/
-  
 }
