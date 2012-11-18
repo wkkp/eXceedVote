@@ -7,6 +7,10 @@ import views.html.*;
 
 import models.*;
 
+/**
+ * Manage projects related operations.
+ */
+@Security.Authenticated(Secured.class)
 public class CriteriaController extends Controller {
 		
 	static Form<Criteria> criteriaForm = form(Criteria.class);

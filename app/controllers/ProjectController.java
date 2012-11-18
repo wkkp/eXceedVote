@@ -7,6 +7,10 @@ import play.data.*;
 import views.html.*;
 import models.*;
 
+/**
+ * Manage projects related operations.
+ */
+@Security.Authenticated(Secured.class)
 public class ProjectController extends Controller {
 
 	static Form<Project> projectForm = form(Project.class);
