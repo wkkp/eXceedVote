@@ -7,6 +7,7 @@ create table ballot (
   id                        bigint auto_increment not null,
   user_id                   bigint,
   project_id                bigint,
+  criteria_id               bigint,
   score                     integer,
   constraint pk_ballot primary key (id))
 ;

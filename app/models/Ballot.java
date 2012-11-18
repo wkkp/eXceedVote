@@ -15,6 +15,8 @@ public class Ballot extends Model {
 	public Long id;
 	public Long user_id;
 	public Long project_id;
+	public Long criteria_id;
+	@Constraints.Required
 	public int score;
 	private static final long serialVersionUID = 1L;
 
@@ -24,12 +26,10 @@ public class Ballot extends Model {
 		super();	
 	}
 
-	public void setScore(int score) {
-		this.score = score;
-	}
-
-	public int getScore() {
-		return this.score;
+	public static void saveBallot(Ballot ballot, User user) {
+		user.ballotqnty -= ballot.score;
+		user.update();
+		ballot.save();
 	}
 
 }

@@ -76,7 +76,4 @@ public class User extends Model {
         		   .findUnique();
 	}
 
-	public void useBallot(int qnty) {
-		this.ballotqnty -= qnty;
-	}
 }

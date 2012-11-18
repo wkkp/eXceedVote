@@ -29,6 +29,7 @@ GET   	/project/view    			controllers.ProjectController.projectsList
 
 # Vote
 GET		/vote 						controllers.VoteController.vote()
+POST 	/vote/cpjid					controllers.VoteController.collectProjectId
 POST	/vote 						controllers.VoteController.voteForProject
 
 # Map static resources from the /public folder to the /assets URL path
