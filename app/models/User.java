@@ -13,7 +13,7 @@ public class User extends Model {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
+	public Long uid;
 	public int type_id;
 	@Constraints.Required
 	public String username;
@@ -76,4 +76,11 @@ public class User extends Model {
         		   .findUnique();
 	}
 
+	public void useBallot(int qnty) {
+		this.ballotqnty -= qnty;
+	}
+	public static int getUserTypeId(User user) {
+ 		return user.type_id;	
+ 	}
+ 	
 }

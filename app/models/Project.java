@@ -13,7 +13,7 @@ public class Project extends Model {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
+	public Long pid;
 	public String name;
 	public String description;
 	
@@ -49,11 +49,3 @@ public class Project extends Model {
 		 find.ref(id).delete();
 	}	
 }
-
-	//public static String getProjectDescription(){
-	//	return  
-	//}
-
-	//public static void removeProject(){
-
-	//}

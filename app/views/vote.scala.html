@@ -13,40 +13,6 @@
 
 @main("Vote", user) {
 <h3>You have @user.ballotqnty ballot(s)</h3>
-<div class="span12">
-	<div class="projectlist" align="center">
-		<h2>Total : @projects.size() project(s)</h2>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Project Name</th>
-					<th>Project Description</th>
-					<th>Vote</th>
-				</tr> 
-			</thead>
-			<tbody>
-				@for(project <- projects) {
-				<tr>
-					<td>@project.id</td>
-					<td>@project.name</td>
-					<td>@project.description</td>
-					<td>
-
-					@if(user.ballotqnty > 0) {
-						<!-- Button to trigger modal -->
-						<a href="#" onclick="selectCriteria()" class="selectTeam">
-							<button onclick="savepjid(document.getElementById('@project.id').value)" class="btn btn-success" type="submit" value="@project.id">
-								Choose
-							</button>
-						</a>
-					}
-					</td>
-				</tr>
-			}
-		</tbody>
-	</table>
-	</div>
 
 <script type="text/javascript">
 	var pjid;
@@ -65,7 +31,6 @@
 $(document).ready(function(){
 
 	$(".slidingDiv").hide();
-
 	$('.selectTeam').click(function(){
 		$(".projectlist").slideToggle(500);
 		$(".slidingDiv").slideToggle();
@@ -80,7 +45,40 @@ $(document).ready(function(){
 });
 
 </script>
-
+    <h3>You have @user.ballotqnty ballot(s)</h3>
+    <div class="span12">
+        <div class="projectlist" align="center">
+        <h2>Total : @projects.size() project(s)</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Project Name</th>
+                    <th>Project Description</th>
+                    <th>Vote</th>
+                </tr> 
+            </thead>
+            <tbody>
+                @for(project <- projects) {
+                    <tr>
+                        <td>@project.pid</td>
+                        <td>@project.name</td>
+                        <td>@project.description</td>
+                        <td>
+                            @if(user.ballotqnty > 0) {
+						<!-- Button to trigger modal -->
+						<a href="#" onclick="selectCriteria()" class="selectTeam">
+							<button onclick="savepjid(document.getElementById('@project.id').value)" class="btn btn-success" type="submit" value="@project.id">
+								Choose
+							</button>
+						</a>
+					}
+                        </td>
+                    </tr>
+                }
+                </tbody>
+        </table>
+        </div>
 
 <div class="slidingDiv"> 
 	<a href="#" class="backToProject"><button class="btn btn-info">Back To ProjectList</button></a>

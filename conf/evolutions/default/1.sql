@@ -4,34 +4,34 @@
 # --- !Ups
 
 create table ballot (
-  id                        bigint auto_increment not null,
+  bid                       bigint auto_increment not null,
   user_id                   bigint,
   project_id                bigint,
   criteria_id               bigint,
   score                     integer,
-  constraint pk_ballot primary key (id))
+  constraint pk_ballot primary key (bid))
 ;
 
 create table criteria (
-  id                        integer auto_increment not null,
+  cid                       bigint auto_increment not null,
   name                      varchar(255),
-  constraint pk_criteria primary key (id))
+  constraint pk_criteria primary key (cid))
 ;
 
 create table project (
-  id                        bigint auto_increment not null,
+  pid                       bigint auto_increment not null,
   name                      varchar(255),
   description               varchar(255),
-  constraint pk_project primary key (id))
+  constraint pk_project primary key (pid))
 ;
 
 create table user (
-  id                        bigint auto_increment not null,
+  uid                       bigint auto_increment not null,
   type_id                   integer,
   username                  varchar(255),
   password                  varchar(255),
   ballotqnty                integer,
-  constraint pk_user primary key (id))
+  constraint pk_user primary key (uid))
 ;
 
 

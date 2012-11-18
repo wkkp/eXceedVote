@@ -21,10 +21,10 @@
 				<tbody>
 					@for(ct<- criteria){
 						<tr>
-							<td>@ct.id</td>
+							<td>@ct.cid</td>
 							<td>@ct.name</td>
 							<td>
-								@form(routes.CriteriaController.deleteCriteria(ct.id)) {
+								@form(routes.CriteriaController.deleteCriteria(ct.cid)) {
 									<button type="submit" class="btn btn-danger">Delete</input>
 
 								}
