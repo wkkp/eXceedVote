@@ -74,5 +74,4 @@ public class User extends Model {
                    .eq("username", username)
         		   .findUnique();
 	}
-
 }
