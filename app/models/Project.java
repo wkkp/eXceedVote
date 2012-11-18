@@ -49,11 +49,3 @@ public class Project extends Model {
 		 find.ref(id).delete();
 	}	
 }
-
-	//public static String getProjectDescription(){
-	//	return  
-	//}
-
-	//public static void removeProject(){
-
-	//}

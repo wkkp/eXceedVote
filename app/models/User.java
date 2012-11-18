@@ -79,4 +79,8 @@ public class User extends Model {
 	public void useBallot(int qnty) {
 		this.ballotqnty -= qnty;
 	}
+	public static int getUserTypeId(User user) {
+ 		return user.type_id;	
+ 	}
+
 }
