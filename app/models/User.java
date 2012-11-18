@@ -13,7 +13,7 @@ public class User extends Model {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
+	public Long uid;
 	public int type_id;
 	@Constraints.Required
 	public String username;

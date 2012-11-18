@@ -12,9 +12,10 @@ import play.data.validation.*;
 public class Ballot extends Model {
 
 	@Id
-	public Long id;
+	public Long bid;
 	public Long user_id;
 	public Long project_id;
+	public Long criteria_id;
 	public int score;
 	private static final long serialVersionUID = 1L;
 

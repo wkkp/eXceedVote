@@ -14,7 +14,7 @@
       <div class="span3 bs-docs-sidebar">
         <ul class="nav nav-list bs-docs-sidenav affix">
             @for(project <- projects){
-                <li class=""><a href="#@project.id"><i class="icon-chevron-right"></i> @project.name</a></li>
+                <li class=""><a href="#@project.pid"><i class="icon-chevron-right"></i> @project.name</a></li>
             }
         </ul>
       </div>
@@ -23,7 +23,7 @@
         <!-- ProjectList
         =================================================  -->
             @for(project <- projects){
-            <section id="@project.id" style="page-break-after:always">
+            <section id="@project.pid" style="page-break-after:always">
           <div class="page-header">
             <br></br>
             <h1>@project.name</h1>

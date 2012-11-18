@@ -17,7 +17,7 @@ POST	/regis 						controllers.Application.register
 # Criteria
 GET 	/criteria  					controllers.CriteriaController.criteria()
 POST	/criteria 					controllers.CriteriaController.newCriteria()
-POST	/criteria/:id/delete		controllers.CriteriaController.deleteCriteria(id: Integer)
+POST	/criteria/:id/delete		controllers.CriteriaController.deleteCriteria(id: Long)
 
 # Project
 GET		/project 					controllers.ProjectController.projects()

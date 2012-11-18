@@ -37,7 +37,7 @@ public class CriteriaController extends Controller {
 		}
 	}
 
-	public static Result deleteCriteria(Integer id) {
+	public static Result deleteCriteria(Long id) {
 		//System.out.println("----------------------");
 		Criteria.delete(id);
 		return redirect(routes.CriteriaController.criteria());

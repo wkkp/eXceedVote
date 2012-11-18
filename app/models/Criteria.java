@@ -11,13 +11,13 @@ import javax.persistence.*;
 @Table(name="criteria")
 public class Criteria extends Model {
 	@Id
-	public Integer id;
+	public Long cid;
 	
 	@Required
 	public String name;
 
-	public static Finder<Integer,Criteria> find = new Finder(
-		Integer.class,Criteria.class);
+	public static Finder<Long,Criteria> find = new Finder(
+		Long.class,Criteria.class);
 
 	public static List<Criteria> all(){
 		return find.all();
@@ -27,7 +27,7 @@ public class Criteria extends Model {
 		criteria.save();
 	}
 
-	public static void delete(Integer id){
+	public static void delete(Long id){
 		find.ref(id).delete();
 	}
 
