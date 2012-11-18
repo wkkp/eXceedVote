@@ -7,7 +7,7 @@ create table ballot (
   id                        bigint auto_increment not null,
   user_id                   bigint,
   project_id                bigint,
-  score                     double,
+  score                     integer,
   constraint pk_ballot primary key (id))
 ;
 
@@ -29,6 +29,7 @@ create table user (
   type_id                   integer,
   username                  varchar(255),
   password                  varchar(255),
+  ballotqnty                integer,
   constraint pk_user primary key (id))
 ;
 

@@ -15,12 +15,19 @@ public class VoteController extends Controller {
 
 	static Form<Criteria> criteriaForm = form(Criteria.class);
 	static Form<Project> projectForm = form(Project.class);
-
+	
+	public static class VoteCollector {
+    
+    	public Integer criteriaId;
+    	public Long projectId;
+    
+    }	
 
 	public static Result vote(){
   		return ok(vote.render(Project.findAllProject()
   				      , Criteria.all()
   				      , criteriaForm
+  				      , projectForm
   				      , User.findByUsername(request().username()))
   		);
 	}
@@ -29,13 +36,12 @@ public class VoteController extends Controller {
 		return ok(vote.render(Project.findAllProject()
 				      , Criteria.all()
 				      , criteriaForm
+				      , projectForm
 				      , User.findByUsername(request().username()))
 		);
 	}
 
 	public static Result voteForProject() {
-		Form<Criteria> cff = criteriaForm.bindFromRequest();
-		System.out.println(cff.get().name);
 		return TODO;	
 	}
   

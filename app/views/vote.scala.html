@@ -1,12 +1,20 @@
-@(projects:List[Project], criteria:List[Criteria], formCriteria: Form[Criteria], user: User)
+@(projects:List[Project], criteria:List[Criteria], criteriaForm: Form[Criteria], projectForm: Form[Project], user: User)
 
 @import helper._
+   <!--<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.common.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.rtl.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.default.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.default.min.css" rel="stylesheet" />-
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2012.3.1114/js/kendo.all.min.js"></script>-->
 
 @main("Vote", user) {
+    <h3>You have @user.ballotqnty ballot(s)</h3>
     <div class="span12">
-        <div class="projectlist">
-        <h2>@projects.size() project(s)</h2>
-        <table class="table table-striped" align="center">
+        <div class="projectlist" align="center">
+        <h2>Total : @projects.size() project(s)</h2>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -23,7 +31,7 @@
                         <td>@project.description</td>
                         <td>
                             <!-- Button to trigger modal -->
-                            <a href="#" onclick="selectCriteria()" class="selectTeam"><button class="btn btn-success" type="submit">Choose</button></a>
+                            <a href="#" onclick="selectCriteria()" class="selectTeam"><button class="btn btn-success" type="submit" name="name" value="@project.name">Choose</button></a>
                         </td>
                     </tr>
                 }
@@ -49,18 +57,19 @@
                 });
 
                 </script>
+                
 
                 <div class="slidingDiv"> 
                 <a href="#" class="backToProject"><button class="btn btn-info">Back To ProjectList</button></a>
-                @form(routes.VoteController.voteForProject) {
                 <h3 id="myModalLabel">Choose Criteria for team XXX</h3>
                         
-                    
+                <div class="span9">
                 <table class="table table-striped" align="center">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Criteria</th>
+                            <th>Score (MAX:10)</th>
                             <th>Vote</th>
                         </tr> 
                     </thead>
@@ -70,35 +79,40 @@
                             <td>@ct.id</td>
                             <td>@ct.name</td>
                             <td>
+                            <div>
+                                <input maxlength="2" size="4" id="@ct.name"></input>
+                                <!-- <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <input data-role="slider" data-bind="value:@ct.name" />
+                                            <script>
+                                                $(document).ready(function() {
+                                                    var Node = kendo.data.Node;
+                                                    
+                                                    var viewModel = kendo.observable({
+                                                        x : 5,
+                                                    });
+
+                                                    kendo.bind($("table"), viewModel);
+                                                });
+                                            </script>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table> -->
+                            </div>
+                            </td>
+                            <td>
                                <button class="btn btn-mini btn-primary" name="name" value="@ct.name">VOTE</button>
+                           
                             </td>
                         </tr>
                     }
                 </tbody>
             </table>
+            </div> <!-- span6-->
+
             </div>
-
-
-
-
-                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h3 id="myModalLabel">Criteria List</h3>
-                    </div>
-                    <div class="modal-body">
-                        <ul>
-                            @for(ct <- criteria) {
-                                <li> @ct.name <button class="btn btn-mini btn-primary" name="name" value="@ct.name">VOTE</button></li>
-                            }
-                        </ul>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                        <button class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-                }
-            
     </div>
 }

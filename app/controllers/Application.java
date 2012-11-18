@@ -33,12 +33,16 @@ public class Application extends Controller {
     
     	public String username;
     	public String password;
+    	public String verifyPassword;
     
     	public String validate() {
-    		if(User.register(username, password) == false) {
+    		int type = User.register(username, password, verifyPassword);
+    		if(type == 0)
         		return "Cannot register with this username";
-    		}
-    		return null;
+    		else if(type == 1)
+				return null;
+			else
+				return "These passwords don't match";
     	}
     
 	}
