@@ -65,13 +65,13 @@ $(document).ready(function(){
                         <td>@project.description</td>
                         <td>
                             @if(user.ballotqnty > 0) {
-						<!-- Button to trigger modal -->
-						<a href="#" onclick="selectCriteria()" class="selectTeam">
-							<button onclick="savepjid(document.getElementById('@project.pid').value)" class="btn btn-success" type="submit" value="@project.pid">
-								Choose
-							</button>
-						</a>
-					}
+								<!-- Button to trigger modal -->
+								<a href="#" onclick="selectCriteria()" class="selectTeam">
+									<button onclick="savepjid(document.getElementById('@project.pid').value)" class="btn btn-success" type="submit" value="@project.pid">
+									Choose
+									</button>
+								</a>
+							}
                         </td>
                     </tr>
                 }
@@ -95,25 +95,24 @@ $(document).ready(function(){
 			</thead>
 			<tbody>
 				@form(routes.VoteController.voteForProject()) {
-				@for(ct <- criteria) {
-				<tr>
-					<td>@ct.cid</td>
-					<td>@ct.name</td>
-					<td>
-						<div>
-							<input maxlength="2" size="4" id="@ct.cid"></input>
-						</div>
-					</td>
-					<td>
-						<input id="scclt" name="score" type="hidden"></input>
-							<input name="user_id" value="@user.uid" type="hidden"></input>
-							<input id="pjclt" name="project_id" type="hidden"></input>
-							<!--<input id="rscore" name="score" type="hidden"></input>-->
-							<button onclick="getpjid()" id="fn" class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
-					</td>
-					
-				</tr>
-				}
+					@for(ct <- criteria) {
+					<tr>
+						<td>@ct.cid</td>
+						<td>@ct.name</td>
+						<td>
+							<div>
+								<input maxlength="2" size="4" id="@ct.cid"></input>
+							</div>
+						</td>
+						<td>
+							<input id="scclt" name="score" type="hidden"></input>
+								<input name="user_id" value="@user.uid" type="hidden"></input>
+								<input id="pjclt" name="project_id" type="hidden"></input>
+								<!--<input id="rscore" name="score" type="hidden"></input>-->
+								<button onclick="getpjid()" id="fn" class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+						</td>
+					</tr>
+					} 
 				}
 			</tbody>
 		</table>
