@@ -32,8 +32,18 @@ public class CriteriaController extends Controller {
 		if(filledForm.hasErrors()){
 			return badRequest(views.html.criteria.render(Criteria.all(),filledForm, User.findByUsername(request().username())));
 		} else {
-			Criteria.create(filledForm.get());
-			return redirect(routes.CriteriaController.criteria());
+
+			if(Criteria.checkExistCriteria(filledForm.get())){
+				Criteria.create(filledForm.get());
+				return redirect(routes.CriteriaController.criteria());
+			}
+
+			else{
+
+				return redirect(routes.CriteriaController.criteria());
+			}
+			
+			
 		}
 	}
 

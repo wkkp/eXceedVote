@@ -31,5 +31,21 @@ public class Criteria extends Model {
 		find.ref(id).delete();
 	}
 
+	public static boolean checkExistCriteria(Criteria criteria){
+		String query = "find criteria where name = :name";
+
+		Criteria c = find.setQuery(query)
+		.setParameter("name",criteria.name)
+		.findUnique();
+		
+		if(c == null){
+			return true;
+		}
+
+		else{
+			return false;
+		}
+	}
+
 	
 }
