@@ -24,12 +24,28 @@ public class VoteController extends Controller {
     }	
 
 	public static Result vote(){
-  		return ok(vote.render(Project.findAllProject()
+
+		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
+     		 return ok(views.html.adminVote.render(Project.findAllProject()
   				      , Criteria.all()
   				      , criteriaForm
   				      , projectForm
   				      , User.findByUsername(request().username()))
-  		);
+     		 		);
+ 		}
+
+    	else{
+			return ok(vote.render(Project.findAllProject()
+  				      , Criteria.all()
+  				      , criteriaForm
+  				      , projectForm
+  				      , User.findByUsername(request().username()))
+  					);
+		}
+
+
+
+  		
 	}
 
 	public static Result saveProject(Long id){

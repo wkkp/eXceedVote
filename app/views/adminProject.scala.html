@@ -2,7 +2,7 @@
 
 @import helper._
 
-@main("Project manager", user) {
+@adminMain("Project manager", user) {
 	<body>
 		<div class="container span6">
 			@form(routes.ProjectController.addProject(), 'class -> "form-signin") {
