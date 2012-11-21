@@ -16,16 +16,28 @@
 <script type="text/javascript">
 	var pjid;
 	
-	function savepjid(x) {
-		pjid = x;
+	function savepjid(id) {
+        pjid = id;
 	}
 
-	function getpjid() {
-		document.getElementById("pjclt").setAttribute("value", pjid);
-		alert(document.getElementById("fn").value);
-		alert(document.getElementById(document.getElementById("fn").value).value);
-		document.getElementById("scclt").setAttribute("value", document.getElementById(document.getElementById("fn").value).value);
-	}
+	function getpjid(y) {
+		var pj = document.getElementById(y);
+        pj.value = pjid;
+    }
+
+    function plusclick(id) {
+        var num = document.getElementById(id);
+        if (parseInt(num.value) < 10)
+        num.value = parseInt(num.value)+1;
+//        $('.p').value($('.p').value + 1);
+    }
+
+    function minusclick(id) {
+        var num = document.getElementById(id);
+        if (parseInt(num.value) > 2)
+            num.value = parseInt(num.value)-1;
+//        $('.p').value($('.p').value + 1);
+    }
 
 $(document).ready(function(){
 
@@ -40,6 +52,11 @@ $(document).ready(function(){
 		// $(".projectlist").slideToggle();
 		$(".slidingDiv").slideToggle(500);
 	});
+
+    $('#p').click(function(){
+        $('#score').attr('value', ($('#score').val() + 1));
+        $('#score').text("fuck");
+    });
 
 });
 
@@ -66,8 +83,8 @@ $(document).ready(function(){
                         <td>
                             @if(user.ballotqnty > 0) {
 								<!-- Button to trigger modal -->
-								<a href="#" onclick="selectCriteria()" class="selectTeam">
-									<button onclick="savepjid(document.getElementById('@project.pid').value)" class="btn btn-success" type="submit" value="@project.pid">
+								<a href="#" class="selectTeam">
+									<button onclick="savepjid('@project.pid')" id="@project.name" value="@project.pid" class="btn btn-success">
 									Choose
 									</button>
 								</a>
@@ -94,26 +111,27 @@ $(document).ready(function(){
 				</tr> 
 			</thead>
 			<tbody>
-				@form(routes.VoteController.voteForProject()) {
 					@for(ct <- criteria) {
-					<tr>
-						<td>@ct.cid</td>
-						<td>@ct.name</td>
-						<td>
-							<div>
-								<input maxlength="2" size="4" id="@ct.cid"></input>
-							</div>
-						</td>
-						<td>
-							<input id="scclt" name="score" type="hidden"></input>
-								<input name="user_id" value="@user.uid" type="hidden"></input>
-								<input id="pjclt" name="project_id" type="hidden"></input>
-								<!--<input id="rscore" name="score" type="hidden"></input>-->
-								<button onclick="getpjid()" id="fn" class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
-						</td>
-					</tr>
-					} 
-				}
+                        @form(routes.VoteController.voteForProject()) {
+        					<tr>
+        						<td>@ct.cid</td>
+        						<td>@ct.name</td>
+        						<td>
+        							<div>
+                                        <button onclick="minusclick('score(@ct.cid)')"name="minus" id="m" type="button" class="btn btn-mini btn-danger">-</button>
+        								<input class="span1" name="score" id="score(@ct.cid)" value="1" readonly="readonly"></input>
+                                        <button onclick="plusclick('score(@ct.cid)')" name="plus" class="btn btn-mini btn-danger" type="button">+</button>
+        							</div>
+        						</td>
+        						<td>
+        								<input name="user_id" value="@user.uid" type="hidden"></input>
+        								<input name="project_id" id="@ct.cid" type="hidden"></input>
+        								<button onmouseover="getpjid('@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+                                        
+        						</td>
+        					</tr>
+					   } 
+				    }
 			</tbody>
 		</table>
 	</div> <!-- span6-->

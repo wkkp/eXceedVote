@@ -37,21 +37,11 @@ public class VoteController extends Controller {
 		);
 	}
 
-	public static Result collectProjectId() {
-		Form<Ballot> bff = ballotForm.bindFromRequest();
-		pjid = bff.get().project_id;
-		System.out.println(pjid);
-		return ok(vote.render(Project.findAllProject()
-  				      , Criteria.all()
-  				      , projectForm
-  				      , bff
-  				      , User.findByUsername(request().username()))
-  		);
-	}
-
 	public static Result voteForProject() {
 		Form<Ballot> bff = ballotForm.bindFromRequest();
-		System.out.println(bff.get().project_id + " " + bff.get().criteria_id + " " + bff.get().score);
+		System.out.println(bff.get().project_id);
+		System.out.println(bff.get().criteria_id);
+		System.out.println(bff.get().score);
 		if (bff.get().score != 0)
 			Ballot.saveBallot(bff.get() , User.findByUsername(request().username()));
 		else 
