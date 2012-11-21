@@ -33,8 +33,8 @@ public class VoteController extends Controller {
     	else{
 			return ok(vote.render(Project.findAllProject()
   				      , Criteria.all()
-  				      , criteriaForm
   				      , projectForm
+  				      , ballotForm
   				      , User.findByUsername(request().username()))
   					);
 		}
