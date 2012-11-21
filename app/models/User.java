@@ -82,5 +82,5 @@ public class User extends Model {
 	public static int getUserTypeId(User user) {
  		return user.type_id;	
  	}
-
+ 	
 }

@@ -25,12 +25,10 @@ public class Ballot extends Model {
 		super();	
 	}
 
-	public void setScore(int score) {
-		this.score = score;
-	}
-
-	public int getScore() {
-		return this.score;
+	public static void saveBallot(Ballot ballot, User user) {
+		user.ballotqnty -= ballot.score;
+		user.update();
+		ballot.save();
 	}
 
 }
