@@ -1,15 +1,66 @@
-@(projects:List[Project], criteria:List[Criteria], criteriaForm: Form[Criteria], projectForm: Form[Project], user: User)
+@(projects:List[Project], criteria:List[Criteria], projectForm: Form[Project],ballotForm: Form[Ballot], user: User)
 
 @import helper._
-   <!--<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.rtl.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.default.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.default.min.css" rel="stylesheet" />-
-    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="http://cdn.kendostatic.com/2012.3.1114/js/kendo.all.min.js"></script>-->
+<!--<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.common.min.css" rel="stylesheet" />
+<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.rtl.min.css" rel="stylesheet" />
+<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.default.min.css" rel="stylesheet" />
+<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.min.css" rel="stylesheet" />
+<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.default.min.css" rel="stylesheet" />-
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="http://cdn.kendostatic.com/2012.3.1114/js/kendo.all.min.js"></script>-->
+
+<!DOCTYPE html>
 
 @main("Vote", user) {
+
+<script type="text/javascript">
+	var pjid;
+	
+	function savepjid(id) {
+        pjid = id;
+	}
+
+	function getpjid(y) {
+		var pj = document.getElementById(y);
+        pj.value = pjid;
+    }
+
+    function plusclick(id) {
+        var num = document.getElementById(id);
+        if (parseInt(num.value) < 10)
+        num.value = parseInt(num.value)+1;
+//        $('.p').value($('.p').value + 1);
+    }
+
+    function minusclick(id) {
+        var num = document.getElementById(id);
+        if (parseInt(num.value) > 1)
+            num.value = parseInt(num.value)-1;
+//        $('.p').value($('.p').value + 1);
+    }
+
+$(document).ready(function(){
+
+	$(".slidingDiv").hide();
+	$('.selectTeam').click(function(){
+		$(".projectlist").slideToggle(500);
+		$(".slidingDiv").slideToggle();
+	});
+
+	$('.backToProject').click(function(){
+		$(".projectlist").slideToggle();
+		// $(".projectlist").slideToggle();
+		$(".slidingDiv").slideToggle(500);
+	});
+
+    $('#p').click(function(){
+        $('#score').attr('value', ($('#score').val() + 1));
+        $('#score').text("fuck");
+    });
+
+});
+
+</script>
     <h3>You have @user.ballotqnty ballot(s)</h3>
     <div class="span12">
         <div class="projectlist" align="center">
@@ -30,89 +81,60 @@
                         <td>@project.name</td>
                         <td>@project.description</td>
                         <td>
-                            <!-- Button to trigger modal -->
-                            <a href="#" onclick="selectCriteria()" class="selectTeam"><button class="btn btn-success" type="submit" name="name" value="@project.name">Choose</button></a>
+                            @if(user.ballotqnty > 0) {
+								<!-- Button to trigger modal -->
+								<a href="#" class="selectTeam">
+									<button onclick="savepjid('@project.pid')" id="@project.name" value="@project.pid" class="btn btn-success">
+									Choose
+									</button>
+								</a>
+							}
                         </td>
                     </tr>
                 }
                 </tbody>
         </table>
         </div>
-                <script type="text/javascript">
-                $(document).ready(function(){
 
-                    $(".slidingDiv").hide();
-                    
-                    $('.selectTeam').click(function(){
-                        $(".projectlist").slideToggle(500);
-                        $(".slidingDiv").slideToggle();
-                    });
+<div class="slidingDiv"> 
+	<a href="#" class="backToProject"><button class="btn btn-info">Back To ProjectList</button></a>
+	<h3 id="myModalLabel">Choose Criteria for team XXX</h3>
 
-                    $('.backToProject').click(function(){
-                        $(".projectlist").slideToggle();
-                        // $(".projectlist").slideToggle();
-                        $(".slidingDiv").slideToggle(500);
-                    });
-
-                });
-
-                </script>
-                
-
-                <div class="slidingDiv"> 
-                <a href="#" class="backToProject"><button class="btn btn-info">Back To ProjectList</button></a>
-                <h3 id="myModalLabel">Choose Criteria for team XXX</h3>
-                        
-                <div class="span9">
-                <table class="table table-striped" align="center">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Criteria</th>
-                            <th>Score (MAX:10)</th>
-                            <th>Vote</th>
-                        </tr> 
-                    </thead>
-                    <tbody>
-                        @for(ct <- criteria) {
-                        <tr>
-                            <td>@ct.cid</td>
-                            <td>@ct.name</td>
-                            <td>
-                            <div>
-                                <input maxlength="2" size="4" id="@ct.name"></input>
-                                <!-- <table>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <input data-role="slider" data-bind="value:@ct.name" />
-                                            <script>
-                                                $(document).ready(function() {
-                                                    var Node = kendo.data.Node;
-                                                    
-                                                    var viewModel = kendo.observable({
-                                                        x : 5,
-                                                    });
-
-                                                    kendo.bind($("table"), viewModel);
-                                                });
-                                            </script>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table> -->
-                            </div>
-                            </td>
-                            <td>
-                               <button class="btn btn-mini btn-primary" name="name" value="@ct.name">VOTE</button>
-                           
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            </div> <!-- span6-->
-
-            </div>
-    </div>
+	<div class="span9">
+		<table class="table table-striped" align="center">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Criteria</th>
+					<th>Score (MAX:10)</th>
+					<th>Vote</th>
+				</tr> 
+			</thead>
+			<tbody>
+					@for(ct <- criteria) {
+                        @form(routes.VoteController.voteForProject()) {
+        					<tr>
+        						<td>@ct.cid</td>
+        						<td>@ct.name</td>
+        						<td>
+        							<div>
+                                        <button onclick="minusclick('score(@ct.cid)')"name="minus" id="m" type="button" class="btn btn-mini btn-danger">-</button>
+        								<input class="span1" name="score" id="score(@ct.cid)" value="1" readonly="readonly"></input>
+                                        <button onclick="plusclick('score(@ct.cid)')" name="plus" class="btn btn-mini btn-danger" type="button">+</button>
+        							</div>
+        						</td>
+        						<td>
+        								<input name="user_id" value="@user.uid" type="hidden"></input>
+        								<input name="project_id" id="@ct.cid" type="hidden"></input>
+        								<button onmouseover="getpjid('@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+                                        
+        						</td>
+        					</tr>
+					   } 
+				    }
+			</tbody>
+		</table>
+	</div> <!-- span6-->
+</div>
+</div>
 }

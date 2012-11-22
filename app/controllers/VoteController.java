@@ -15,34 +15,54 @@ public class VoteController extends Controller {
 
 	static Form<Criteria> criteriaForm = form(Criteria.class);
 	static Form<Project> projectForm = form(Project.class);
-	
-	public static class VoteCollector {
-    
-    	public Integer criteriaId;
-    	public Long projectId;
-    
-    }	
+	static Form<Ballot> ballotForm = form(Ballot.class);
+
+	public static Long pjid;
 
 	public static Result vote(){
-  		return ok(vote.render(Project.findAllProject()
+
+		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
+     		 return ok(views.html.adminVote.render(Project.findAllProject()
   				      , Criteria.all()
-  				      , criteriaForm
   				      , projectForm
+  				      , ballotForm
   				      , User.findByUsername(request().username()))
-  		);
+     		 		);
+ 		}
+
+    	else{
+			return ok(vote.render(Project.findAllProject()
+  				      , Criteria.all()
+  				      , projectForm
+  				      , ballotForm
+  				      , User.findByUsername(request().username()))
+  					);
+		}
+
+
+
+  		
 	}
 
 	public static Result saveProject(Long id){
 		return ok(vote.render(Project.findAllProject()
 				      , Criteria.all()
-				      , criteriaForm
 				      , projectForm
+				      , ballotForm
 				      , User.findByUsername(request().username()))
 		);
 	}
 
 	public static Result voteForProject() {
-		return TODO;	
+		Form<Ballot> bff = ballotForm.bindFromRequest();
+		System.out.println(bff.get().project_id);
+		System.out.println(bff.get().criteria_id);
+		System.out.println(bff.get().score);
+		if (bff.get().score != 0)
+			Ballot.saveBallot(bff.get() , User.findByUsername(request().username()));
+		else 
+			redirect(routes.VoteController.vote());
+		return TODO;
 	}
   
 }
