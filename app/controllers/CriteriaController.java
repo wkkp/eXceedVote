@@ -16,7 +16,8 @@ public class CriteriaController extends Controller {
 	static Form<Criteria> criteriaForm = form(Criteria.class);
 
 	// public static Result index() {
-	//   return redirect(routes.Application.task());//ok(index.render("Your new application is ready."));
+	//   return redirect(routes.Application.task());
+	// ok(index.render("Your new application is ready."));
 	// }
 
 	public static Result criteria(){
