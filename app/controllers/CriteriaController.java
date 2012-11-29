@@ -20,20 +20,34 @@ public class CriteriaController extends Controller {
 	// }
 
 	public static Result criteria(){
-		return ok(views.html.criteria.render(Criteria.all(),criteriaForm, User.findByUsername(request().username())));
-	}
+		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
+			return ok(views.html.adminCriteria.render(Criteria.all(),criteriaForm, User.findByUsername(request().username())));
+		}
+ 		else
+			return redirect(routes.Home.home());
+		}
 
 	public static Result newCriteria(){
 		Form<Criteria> filledForm = criteriaForm.bindFromRequest();
 		if(filledForm.hasErrors()){
-			return badRequest(views.html.criteria.render(Criteria.all(),filledForm, User.findByUsername(request().username())));
+			return badRequest(views.html.adminCriteria.render(Criteria.all(),filledForm, User.findByUsername(request().username())));
 		} else {
-			Criteria.create(filledForm.get());
-			return redirect(routes.CriteriaController.criteria());
+
+			if(Criteria.checkExistCriteria(filledForm.get())){
+				Criteria.create(filledForm.get());
+				return redirect(routes.CriteriaController.criteria());
+			}
+
+			else{
+
+				return redirect(routes.CriteriaController.criteria());
+			}
+			
+			
 		}
 	}
 
-	public static Result deleteCriteria(Integer id) {
+	public static Result deleteCriteria(Long id) {
 		//System.out.println("----------------------");
 		Criteria.delete(id);
 		return redirect(routes.CriteriaController.criteria());

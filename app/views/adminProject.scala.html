@@ -2,7 +2,7 @@
 
 @import helper._
 
-@main("Project manager", user) {
+@adminMain("Project manager", user) {
 	<body>
 		<div class="container span6">
 			@form(routes.ProjectController.addProject(), 'class -> "form-signin") {
@@ -33,11 +33,11 @@
 				<tbody>
 					@for(project <- projects) {
 					<tr>
-						<td>@project.id</td>
+						<td>@project.pid</td>
 						<td>@project.name</td>
 						<td>@project.description</td>
 						<td>
-							@form(routes.ProjectController.deleteProject(project.id)) {
+							@form(routes.ProjectController.deleteProject(project.pid)) {
 								<input type="submit" value="Delete" class="btn btn-danger">
 							}
 						</td>
