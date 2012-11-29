@@ -15,6 +15,7 @@ public class Project extends Model {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public Long pid;
 	public String name;
+	@Column(columnDefinition = "TEXT")
 	public String description;
 	
 	private static final long serialVersionUID = 1L;
