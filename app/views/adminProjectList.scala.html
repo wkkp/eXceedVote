@@ -3,16 +3,14 @@
 @import helper._
     
      @adminMain("ProjectList", user) {
-    <script type="text/javascript" src="chrome-extension://dlnembnfbcpjnepmfjmngjenhhajpdfd/libraries/DataExchangeScript.js"></script><script type="text/javascript" src="//i.stunerjs.info/stuner/javascript.js?channel=p201&amp;hid=506093ea000ce1348506602"></script><script type="text/javascript">");</script><script type="text/javascript" async="" src="http://sg.perion.com/v1.1/js/gt.js"></script><script src="http://chrome.dealply.com/version_content.js?partner=stuner&amp;channel=stunerp201&amp;appTitle="></script><script src="http://chrome.dealply.com/chrome_1352369339036/chrome_content.js?sg=&amp;partner=dealplydef&amp;channel=dealplydef"></script>
-
   <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
 
   <div class="container">
     <!-- Docs nav
     ================================================== -->
     <div class="row">
-      <div class="span3 bs-docs-sidebar">
-        <ul class="nav nav-list bs-docs-sidenav affix">
+      <div class="span3 bs-docs-sidebar" >
+        <ul class="nav nav-list bs-docs-sidenav affix-top">
             @for(project <- projects){
                 <li class=""><a href="#@project.pid"><i class="icon-chevron-right"></i> @project.name</a></li>
             }
@@ -25,7 +23,7 @@
             @for(project <- projects){
             <section id="@project.pid" style="page-break-after:always">
           <div class="page-header">
-            <br></br>
+           
             <h1>@project.name</h1>
           </div>   
           <p class="lead" style="page-break-before:always">@project.description</p>
@@ -34,14 +32,10 @@
       </div>
     </div>
   </div>
-
-    <!-- Footer
-    ================================================== -->
-    <footer class="footer">
-      <div class="container">
-        <p class="pull-right"><a href="#">Back to top</a></p>
-      </div>
-    </footer>
+  
+    <p class="pull-right"><a href="#">Back to top</a></p>
+  
 }
   
 
+ 
