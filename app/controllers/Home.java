@@ -21,8 +21,15 @@ public class Home extends Controller {
 	}	
 
 	public static Result home() {
-		return ok(home.render(
+		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
+     		 return ok(views.html.adminHome.render(User.findByUsername(request().username()))
+     		 	);
+ 		}
+
+    	else{
+			return ok(home.render(
 			User.findByUsername(request().username()))
-		);
+			);
+		}
 	}
 }
