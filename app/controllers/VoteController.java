@@ -16,6 +16,7 @@ public class VoteController extends Controller {
 	static Form<Criteria> criteriaForm = form(Criteria.class);
 	static Form<Project> projectForm = form(Project.class);
 	static Form<Ballot> ballotForm = form(Ballot.class);
+	static Form<BallotBox> boxForm = form(BallotBox.class);
 
 	public static Long pjid;
 
@@ -30,15 +31,15 @@ public class VoteController extends Controller {
      		 		);
  		}
 
-    	else{
+	   	else{
 			return ok(vote.render(Project.findAllProject()
   				      , Criteria.all()
   				      , projectForm
   				      , ballotForm
-  				      , User.findByUsername(request().username()))
+  				      , User.findByUsername(request().username())
+  				      , boxForm)
   					);
 		}
-  		
 	}
 
 	public static Result saveProject(Long id){
@@ -46,17 +47,25 @@ public class VoteController extends Controller {
 				      , Criteria.all()
 				      , projectForm
 				      , ballotForm
-				      , User.findByUsername(request().username()))
+				      , User.findByUsername(request().username())
+				      , boxForm)
 		);
 	}
 
 	public static Result voteForProject() {
 		Form<Ballot> bff = ballotForm.bindFromRequest();
+		Form<BallotBox> box = boxForm.bindFromRequest();
+		
 		System.out.println(bff.get().project_id);
 		System.out.println(bff.get().criteria_id);
 		System.out.println(bff.get().score);
+
 		if (bff.get().score != 0)
-			Ballot.saveBallot(bff.get() , User.findByUsername(request().username()));
+			Ballot.saveBallot(bff.get() , User.findByUsername(request().username()));	
+		
+		/*if (BallotBox.checkQuantity(User.findByUsername(request().username()), box.get())) {
+			Ballot.saveBallot(bff.get(), User.findByUsername(request().username()));
+		}*/
 		else 
 			redirect(routes.VoteController.vote());
 		return 

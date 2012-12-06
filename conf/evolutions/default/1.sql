@@ -34,6 +34,13 @@ create table user (
   constraint pk_user primary key (uid))
 ;
 
+create table votetype (
+  vid                       bigint auto_increment not null,
+  vote_type                 integer,
+  vote_criterion            integer,
+  constraint pk_votetype primary key (vid))
+;
+
 
 
 
@@ -48,6 +55,8 @@ drop table criteria;
 drop table project;
 
 drop table user;
+
+drop table votetype;
 
 SET FOREIGN_KEY_CHECKS=1;
 
