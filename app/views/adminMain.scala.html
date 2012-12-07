@@ -21,12 +21,15 @@
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner" >
 			<div class="container-fluid">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<button type = "button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href="/"><img width="120px" height="600px" src="@routes.Assets.at("images/exceed.png")"></a>
+				</button>
+				<p class="navbar-text pull-right"> 
+						<i class="icon-white icon-user"></i> @user.username&nbsp
+				</p>
+				<a class="brand" href="/"><img width="120px" height="600px" src="@routes.Assets.at("images/exceed_logo.png")"></a>
 				<div class="nav-collapse collapse ">
 					<ul class="nav">
 						<li class="active"><a href="/">Home</a></li>
@@ -34,29 +37,8 @@
 							<li><a href="/vote">Vote</a></li>
 							<li><a href="/project">ProjectManager</a></li>
 							<li><a href="/criteria">CriteriaManager</a></li>
-						</ul>
-						<div class="navbar-form pull-right">
-							
-							<div class="btn-group pull-right">
-								<button class="btn btn-primary btn-info dropdown-toggle" data-toggle="dropdown">
-									<i class="icon-user"></i> 
-									&nbsp@user.username&nbsp&nbsp
-									<span class="caret"></span>
-								</button>
-								
-								<ul class="dropdown-menu" align="left">
-									<li><a href="#">Action</a></li>
-									<li><a href="#">Another action</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li class="divider"></li>
-									
-									@form(routes.Application.logout) {
-									<li><a href="#" onclick="$(this).closest('form').submit()">
-										Log out </a></li>
-									}
-								</ul>
-							</div>
-						</div>
+							<li class=""><a href="/logout">Logout</a></li> 
+						</ul>	
 					</div>
 				</div>
 			</div>
