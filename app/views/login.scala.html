@@ -43,7 +43,14 @@
         </style>
     </head>
     <body>
+        <script type="text/javascript">
+             $(document).ready(function() {
+               // do stuff when DOM is ready
+             });
+        </script>
         <div class="container">
+            <center><img src="@routes.Assets.at("images/logo_index.png")"></center>
+            <br>
             @form(routes.Application.authenticate, 'class -> "form-signin") {
                 <h2 class="form-signin-heading">Please sign in</h2>
                 @if(loginForm.hasGlobalErrors) { 
