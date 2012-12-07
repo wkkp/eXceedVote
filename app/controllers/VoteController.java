@@ -38,9 +38,6 @@ public class VoteController extends Controller {
   				      , User.findByUsername(request().username()))
   					);
 		}
-
-
-
   		
 	}
 
@@ -62,7 +59,8 @@ public class VoteController extends Controller {
 			Ballot.saveBallot(bff.get() , User.findByUsername(request().username()));
 		else 
 			redirect(routes.VoteController.vote());
-		return TODO;
+		return 
+			redirect(routes.VoteController.vote());
 	}
   
 }
