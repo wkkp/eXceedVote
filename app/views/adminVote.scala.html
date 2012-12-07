@@ -1,16 +1,9 @@
 @(projects:List[Project], criteria:List[Criteria], projectForm: Form[Project],ballotForm: Form[Ballot], user: User, boxForm: Form[BallotBox])
 
 @import helper._
-   <!--<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.common.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.rtl.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.default.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.min.css" rel="stylesheet" />
-    <link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.dataviz.default.min.css" rel="stylesheet" />-
-    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <script src="http://cdn.kendostatic.com/2012.3.1114/js/kendo.all.min.js"></script>-->
-
 @adminMain("Vote", user) {
-<script type="text/javascript">
+
+    <script type="text/javascript">
     var pjid;
     
     function savepjid(id) {
@@ -25,16 +18,16 @@
     function plusclick(id) {
         var num = document.getElementById(id);
         if (parseInt(num.value) < 10)
-        num.value = parseInt(num.value)+1;
+            num.value = parseInt(num.value)+1;
 //        $('.p').value($('.p').value + 1);
-    }
+}
 
-    function minusclick(id) {
-        var num = document.getElementById(id);
-        if (parseInt(num.value) > 1)
-            num.value = parseInt(num.value)-1;
+function minusclick(id) {
+    var num = document.getElementById(id);
+    if (parseInt(num.value) > 1)
+        num.value = parseInt(num.value)-1;
 //        $('.p').value($('.p').value + 1);
-    }
+}
 
 $(document).ready(function(){
 
@@ -58,9 +51,9 @@ $(document).ready(function(){
 });
 
 </script>
-    <h3>You have @user.ballotqnty ballot(s)</h3>
-    <div class="span12">
-        <div class="projectlist" align="center">
+<h3>You have @user.ballotqnty ballot(s)</h3>
+<div class="span12">
+    <div class="projectlist" align="center">
         <h2>Total : @projects.size() project(s)</h2>
         <table class="table table-striped">
             <thead>
@@ -73,25 +66,25 @@ $(document).ready(function(){
             </thead>
             <tbody>
                 @for(project <- projects) {
-                    <tr>
-                        <td>@project.pid</td>
-                        <td>@project.name</td>
-                        <td>@project.description</td>
-                        <td>
-                            @if(user.ballotqnty > 0) {
-                                <!-- Button to trigger modal -->
-                                <a href="#" class="selectTeam">
-                                    <button onclick="savepjid('@project.pid')" id="@project.name" value="@project.pid" class="btn btn-success">
-                                    Choose
-                                    </button>
-                                </a>
-                            }
-                        </td>
-                    </tr>
-                }
-                </tbody>
-        </table>
-        </div>
+                <tr>
+                    <td>@project.pid</td>
+                    <td>@project.name</td>
+                    <td>@project.description</td>
+                    <td>
+                        @if(user.ballotqnty > 0) {
+                        <!-- Button to trigger modal -->
+                        <a href="#" class="selectTeam">
+                            <button onclick="savepjid('@project.pid')" id="@project.name" value="@project.pid" class="btn btn-success">
+                                Choose
+                            </button>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
 
 <div class="slidingDiv"> 
     <a href="#" class="backToProject"><button class="btn btn-info">Back To ProjectList</button></a>
@@ -108,30 +101,30 @@ $(document).ready(function(){
                 </tr> 
             </thead>
             <tbody>
-                    @for(ct <- criteria) {
-                        @form(routes.VoteController.voteForProject()) {
-                            <tr>
-                                <td>@ct.cid</td>
-                                <td>@ct.name</td>
-                                <td>
-                                    <div>
-                                        <button onclick="minusclick('score(@ct.cid)')"name="minus" id="m" type="button" class="btn btn-small btn-danger">-</button>
-                                        <input class="input-mini" name="ballot_qnty" id="score(@ct.cid)" value="1" readonly="readonly"></input>
-                                        <button onclick="plusclick('score(@ct.cid)')" name="plus" class="btn btn-small btn-danger" type="button">+</button>
-                                    </div>
-                                </td>
-                                <td>
-                                        <input name="user_id" value="@user.uid" type="hidden"></input>
-                                        <input name="project_id" id="c@ct.cid" type="hidden"></input>
-                                        <button onmouseover="getpjid('c@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
-                                        
-                                </td>
-                            </tr>
-                       } 
-                    }
-            </tbody>
-        </table>
-    </div> <!-- span6-->
+                @for(ct <- criteria) {
+                @form(routes.VoteController.voteForProject()) {
+                <tr>
+                    <td>@ct.cid</td>
+                    <td>@ct.name</td>
+                    <td>
+                        <div>
+                            <button onclick="minusclick('score(@ct.cid)')"name="minus" id="m" type="button" class="btn btn-small btn-danger">-</button>
+                            <input class="input-mini" name="ballot_qnty" id="score(@ct.cid)" value="1" readonly="readonly"></input>
+                            <button onclick="plusclick('score(@ct.cid)')" name="plus" class="btn btn-small btn-danger" type="button">+</button>
+                        </div>
+                    </td>
+                    <td>
+                        <input name="user_id" value="@user.uid" type="hidden"></input>
+                        <input name="project_id" id="c@ct.cid" type="hidden"></input>
+                        <button onmouseover="getpjid('c@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+
+                    </td>
+                </tr>
+            } 
+        }
+    </tbody>
+</table>
+</div> <!-- span6-->
 </div>
 </div>
 }
