@@ -48,8 +48,13 @@ create table votetype (
   constraint pk_votetype primary key (vid))
 ;
 
+INSERT INTO `exceedvote`.`usertype` (`tid`, `user_type`) VALUES (1, 1);
+INSERT INTO `exceedvote`.`user` (`uid`, `type_id`, `username`, `password`, `ballotqnty`) VALUES (1, 9, 'admin', 'admin', 100);
 
-
+INSERT INTO `exceedvote`.`project` (`pid`, `name`) VALUES (1, '\\(>w<!!)/ 1 ~');
+INSERT INTO `exceedvote`.`project` (`pid`, `name`) VALUES (2, '\\(OwO!!)/ 2 ~');
+INSERT INTO `exceedvote`.`project` (`pid`, `name`) VALUES (3, '\\(TwT!!)/ 3 ~');
+INSERT INTO `exceedvote`.`project` (`pid`, `name`) VALUES (4, '\\(-w-!!)/ 4 ~');
 
 # --- !Downs
 
