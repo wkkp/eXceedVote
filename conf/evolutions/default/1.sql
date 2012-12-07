@@ -48,6 +48,9 @@ create table votetype (
   constraint pk_votetype primary key (vid))
 ;
 
+
+
+
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
