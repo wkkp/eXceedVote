@@ -21,7 +21,7 @@ create table criteria (
 create table project (
   pid                       bigint auto_increment not null,
   name                      varchar(255),
-  description               varchar(255),
+  description               TEXT,
   constraint pk_project primary key (pid))
 ;
 

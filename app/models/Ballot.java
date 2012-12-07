@@ -26,9 +26,11 @@ public class Ballot extends Model {
 	}
 
 	public static void saveBallot(Ballot ballot, User user) {
-		user.ballotqnty -= ballot.score;
-		user.update();
-		ballot.save();
+		if (user.ballotqnty >= ballot.score) {
+			user.ballotqnty -= ballot.score;
+			user.update();
+			ballot.save();
+		}
 	}
 
 }
