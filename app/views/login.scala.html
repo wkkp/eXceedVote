@@ -5,7 +5,11 @@
 <html>
     <head>
 		<title>Login</title>
-		<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap-responsive.css")">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+       
 		<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 		<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
 		<script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
@@ -16,7 +20,7 @@
 			    	background-color: #f5f5f5;
       		}
      	    .form-signin {
-                max-width: 300px;
+                <map></map> x-width: 300px;
                 padding: 19px 29px 29px;
                 margin: 0 auto 20px;
                 background-color: #fff;
@@ -24,10 +28,7 @@
                 -webkit-border-radius: 5px;
                 -moz-border-radius: 5px;
                 border-radius: 5px;
-                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                box-shadow: 0 1px 2px rgba(0,0,0,.05);
-  		    }
+                -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);    		    }
   			.form-signin .form-signin-heading,
             .form-signin .checkbox {
   				      margin-bottom: 10px;
@@ -42,7 +43,15 @@
         </style>
     </head>
     <body>
+        <script type="text/javascript">
+             $(document).ready(function() {
+                $('.container').hide();
+                $('.container').fadeIn(1000);
+             });
+        </script>
         <div class="container">
+            <center><img src="@routes.Assets.at("images/logo_index.png")"></center>
+            <br>
             @form(routes.Application.authenticate, 'class -> "form-signin") {
                 <h2 class="form-signin-heading">Please sign in</h2>
                 @if(loginForm.hasGlobalErrors) { 
@@ -69,3 +78,16 @@
         </div>
     </body>	
 </html>
+
+<!--<html>
+<head>
+    <title></title>
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap-responsive.min.css")">
+    <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/docs.css")">
+</head>
+<body>
+    <h1> test</h1>
+</body>
+</html>-->

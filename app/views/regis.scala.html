@@ -43,6 +43,8 @@
 </head>
 <body>
 	<div class="container">
+		<center><img src="@routes.Assets.at("images/logo_index.png")"></center>
+        <br>
 		@form(routes.Application.register, 'class -> "form-signin") {
 		<h2 class="form-signin-heading">Sign up</h2>
 		@if(regisForm.hasGlobalErrors) { 
