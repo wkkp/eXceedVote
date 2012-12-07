@@ -27,7 +27,8 @@ public class VoteController extends Controller {
   				      , Criteria.all()
   				      , projectForm
   				      , ballotForm
-  				      , User.findByUsername(request().username()))
+  				      , User.findByUsername(request().username())
+  				      , boxForm)
      		 		);
  		}
 
@@ -60,12 +61,12 @@ public class VoteController extends Controller {
 		System.out.println(bff.get().criteria_id);
 		System.out.println(bff.get().score);
 
-		if (bff.get().score != 0)
-			Ballot.saveBallot(bff.get() , User.findByUsername(request().username()));	
+		if (BallotBox.checkQuantity(User.findByUsername(request().username()), box.get())) {
+			Ballot.saveBallot(bff.get()
+							  , User.findByUsername(request().username())
+							  , box.get().ballot_qnty);
+		}
 		
-		/*if (BallotBox.checkQuantity(User.findByUsername(request().username()), box.get())) {
-			Ballot.saveBallot(bff.get(), User.findByUsername(request().username()));
-		}*/
 		else 
 			redirect(routes.VoteController.vote());
 		return 

@@ -15,6 +15,9 @@ public class BallotBox {
 	}	
 	
 	public static boolean checkQuantity(User user, BallotBox box) {
+
+		System.out.println("greeting");
+		
 		if (box.ballot_qnty <= user.ballotqnty)
 			return true;
 		else

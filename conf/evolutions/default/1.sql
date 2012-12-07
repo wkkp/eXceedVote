@@ -34,6 +34,13 @@ create table user (
   constraint pk_user primary key (uid))
 ;
 
+create table usertype (
+  tid                       bigint auto_increment not null,
+  user_type                 integer,
+  ballot_qnty               integer,
+  constraint pk_usertype primary key (tid))
+;
+
 create table votetype (
   vid                       bigint auto_increment not null,
   vote_type                 integer,
@@ -55,6 +62,8 @@ drop table criteria;
 drop table project;
 
 drop table user;
+
+drop table usertype;
 
 drop table votetype;
 

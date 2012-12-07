@@ -1,4 +1,4 @@
-@(projects:List[Project], criteria:List[Criteria], projectForm: Form[Project],ballotForm: Form[Ballot], user: User)
+@(projects:List[Project], criteria:List[Criteria], projectForm: Form[Project],ballotForm: Form[Ballot], user: User, boxForm: Form[BallotBox])
 
 @import helper._
    <!--<link href="http://cdn.kendostatic.com/2012.3.1114/styles/kendo.common.min.css" rel="stylesheet" />
@@ -116,14 +116,14 @@ $(document).ready(function(){
                                 <td>
                                     <div>
                                         <button onclick="minusclick('score(@ct.cid)')"name="minus" id="m" type="button" class="btn btn-mini btn-danger">-</button>
-                                        <input class="span1" name="score" id="score(@ct.cid)" value="1" readonly="readonly"></input>
+                                        <input class="span1" name="ballot_qnty" id="score(@ct.cid)" value="1" readonly="readonly"></input>
                                         <button onclick="plusclick('score(@ct.cid)')" name="plus" class="btn btn-mini btn-danger" type="button">+</button>
                                     </div>
                                 </td>
                                 <td>
                                         <input name="user_id" value="@user.uid" type="hidden"></input>
-                                        <input name="project_id" id="@ct.cid" type="hidden"></input>
-                                        <button onmouseover="getpjid('@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+                                        <input name="project_id" id="c@ct.cid" type="hidden"></input>
+                                        <button onmouseover="getpjid('c@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
                                         
                                 </td>
                             </tr>

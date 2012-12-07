@@ -24,12 +24,22 @@ public class Ballot extends Model {
 	public Ballot() {
 		super();	
 	}
+	
+	public Ballot(Long uid, Long pid, Long cid) {
+		super();
+		this.user_id = uid;
+		this.project_id = pid;
+		this.criteria_id = cid;
+	}
 
-	public static void saveBallot(Ballot ballot, User user) {
-		if (user.ballotqnty >= ballot.score) {
-			user.ballotqnty -= ballot.score;
-			user.update();
-			ballot.save();
+	public static void saveBallot(Ballot ballot, User user, int qnty) {
+		Long tuser_id = ballot.user_id;
+		Long tproject_id = ballot.project_id;
+		Long tcriteria_id = ballot.criteria_id;
+		
+		for (int i = 0; i < qnty; i++) {
+			Ballot b = new Ballot(tuser_id, tproject_id, tcriteria_id);
+			b.save();
 		}
 	}
 
