@@ -42,5 +42,4 @@ public class Ballot extends Model {
 			b.save();
 		}
 	}
-
 }
