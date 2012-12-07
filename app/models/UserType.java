@@ -18,6 +18,7 @@ public class UserType extends Model {
 
 	private static final long serialVersionUID = 1L;
 
+
 	public UserType() {
 		super();	
 	}	

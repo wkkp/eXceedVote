@@ -38,8 +38,11 @@ public class Ballot extends Model {
 		Long tcriteria_id = ballot.criteria_id;
 		
 		for (int i = 0; i < qnty; i++) {
+			user.ballotqnty--;
 			Ballot b = new Ballot(tuser_id, tproject_id, tcriteria_id);
 			b.save();
 		}
+		
+		user.update();
 	}
 }

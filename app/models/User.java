@@ -26,6 +26,7 @@ public class User extends Model {
 	private static final int STUDENT = 1;
 
 	public static Model.Finder<String,User> find = new Model.Finder(String.class, User.class);
+	public static Model.Finder<Long,UserType> findType = new Finder(Long.class, UserType.class);
 
 	public User() {
 		super();
@@ -37,11 +38,12 @@ public class User extends Model {
 		this.password = password;
 	}
 	
-	public User(String username, String password, int type) {
+	public User(String username, String password, int type, int blqnty) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.type_id = type;
+		this.ballotqnty = blqnty;
 	}
 
 	/**
@@ -67,7 +69,10 @@ public class User extends Model {
 	    else if (!username.equals("") && !password.equals("") && !verifyPassword.equals("")) {
 			if (password.equals(verifyPassword)) {
 				if (u == null) {
-					User newUser = new User(username, password, 1);
+					UserType utype = findType.where()
+										 .eq("user_type", 1)
+										 .findUnique();
+					User newUser = new User(username, password, 1, utype.ballot_qnty);
 					newUser.save();
 					return 1;
 				}
