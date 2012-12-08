@@ -79,6 +79,25 @@
                             <h1>@project.name</h1>
                         </div>   
                         <!-- <p class="lead" style="page-break-before:always"></p> -->
+                        @for(ct <- criteria) {
+                            @form(routes.VoteController.voteForProject()) {
+                            <tr>
+                                <td>@ct.name</td>
+                                <td>
+                                    <div>
+                                        <button onclick="minusclick('(p@project.pid)(c@ct.cid)')"name="minus" id="m" type="button" class="btn btn-small btn-danger">-</button>
+                                        <input class="input-mini" name="ballot_qnty" id="(p@project.pid)(c@ct.cid)" value="1" readonly="readonly"></input>
+                                        <button onclick="plusclick('(p@project.pid)(c@ct.cid)')" name="plus" class="btn btn-small btn-danger" type="button">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input name="user_id" value="@user.uid" type="hidden"></input>
+                                    <input name="project_id" id="c@ct.cid" type="hidden" value="@project.pid"></input>
+                                    <button class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+                                </td>
+                            </tr>
+                            } 
+                        }
                         <p class="lead" style="page-break-before:always">@project.description</p>
                     </section>
                 }
