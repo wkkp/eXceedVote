@@ -1,0 +1,7 @@
+body#/ a#nav-home,
+body#products a#nav-products,
+body#gallery a#nav-gallery,
+body#about a#nav-about
+{
+color: red;
+}
