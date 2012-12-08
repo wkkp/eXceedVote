@@ -1,0 +1,19 @@
+@(criteria:Criteria,user:User)
+
+@import helper._
+
+@adminMain("Criteria Edit", user) {
+	<body>
+		<center><h1>Criteria Management</h1></center>
+		<div class="container">
+			<div class="span6">
+				<h2 class="form-signin-heading">Edit criteria</h2>
+				@form(routes.CriteriaController.newCriteria()){
+					 criteria.name()
+					<button class="btn btn-large btn-primary" type="submit">Add</button>
+				}
+				<!--</form>-->
+			</div>
+		</div>
+	</body>
+}

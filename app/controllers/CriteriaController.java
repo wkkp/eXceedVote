@@ -57,9 +57,6 @@ public class CriteriaController extends Controller {
 	}
 
 	public static Result editCriteria(Long id) {
-		//System.out.println("----------------------");
-		// Criteria.delete(id);
-		// return redirect(routes.CriteriaController.criteria());
-		return TODO;
+		return ok(adminCriteriaEdit.render(Criteria.findById(id)), User.findByUsername(request().username()));
 	}
 }

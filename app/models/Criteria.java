@@ -23,6 +23,10 @@ public class Criteria extends Model {
 		return find.all();
 	}
 
+	public static String getName(){
+		return name;
+	}
+
 	public static void create(Criteria criteria){
 		criteria.save();
 	}
