@@ -11,11 +11,14 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("bootstrap/css/docs.css")">
  	<link href="@routes.Assets.at("stylesheets/kanisorn.css")" rel="stylesheet">
 	<link href="@routes.Assets.at("stylesheets/prettify.css")" rel="stylesheet">
+	<link href="@routes.Assets.at("stylesheets/jquery.countdown.css")" rel="stylesheet">
 	
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 	<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
 	<script src="@routes.Assets.at("bootstrap/js/bootstrap.js")" type="text/javascript"></script>
+	
 </head>
+
 <header>
 	<div class="navbar navbar-inverse navbar-fixed-top ">
 		<div class="navbar-inner ">
@@ -45,9 +48,11 @@
 	<body>
 
 		<div>
+
 			<div class="jumbotron subhead" id="overview">
 				<div class="container">
-					<h1>@title</h1>
+					<div class="span4"><h1>@title</h1></div>
+					<!-- <div id="defaultCountdown" class="span6"></div> -->
 				</div>
 			</div>
 			@content
