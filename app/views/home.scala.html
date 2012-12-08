@@ -2,14 +2,31 @@
 
 @import helper._
 
-@main("Home", user) {
-	<body id="home">	
-		<h1>@user.username</h1>
-		@form(routes.Application.logout) {
-			<button class="btn btn-large btn-danger" type="submit">Sign out</button>	
-		}
-		@form(routes.VoteController.vote) {
-			<button class="btn btn-large btn-warning" type="submit">Vote</button>
-		}
+@main("eXceed Vote", user) {
+
+	<body id="home">
+	<link href="@routes.Assets.at("stylesheets/jquery.countdown.css")" rel="stylesheet">
+	<style type="text/css">
+	#defaultCountdown { width: 450px; height: 50px; }
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="@routes.Assets.at("stylesheets/jquery.countdown.js")"></script>
+	<script type="text/javascript">
+	$(function () {
+		var austDay = new Date();
+		austDay = new Date(2012, 12-1, 20, 21, 00, 00, 00);
+		$('#defaultCountdown').countdown({until: austDay});
+		$('#year').text(austDay.getFullYear());
+	});
+	</script>
+	<center>
+	<br>
+	<h2>Time Remaining</h2>
+	<br>
+	<div id="defaultCountdown"></div>
+	<br><br>
+	
+	</center>
 	</body>
+
 }
