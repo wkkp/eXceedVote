@@ -1,0 +1,8 @@
+
+body#home a#nav-home,
+body#projectlist a#projectlist
+{
+color: white;
+background:white; 
+font-size: 100px;
+}
