@@ -1,7 +1,8 @@
-body#/ a#nav-home,
-body#products a#nav-products,
-body#gallery a#nav-gallery,
-body#about a#nav-about
+
+body#home a#nav-home,
+body#projectlist a#projectlist
 {
-color: red;
+color: white;
+background:white; 
+font-size: 100px;
 }

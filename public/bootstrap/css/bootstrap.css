@@ -3900,7 +3900,7 @@ input[type="submit"].btn.btn-mini {
 
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover {
-  color: #555555;
+  color: #555555; 
   cursor: default;
   background-color: #ffffff;
   border: 1px solid #ddd;
@@ -4616,6 +4616,11 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-inverse .nav .active > a,
+#home .navbar-inverse .nav #nav-home> a,
+#vote .navbar-inverse .nav #nav-vote> a,
+#projectlist .navbar-inverse .nav #nav-projectlist> a,
+#projectmanager .navbar-inverse .nav #nav-projectmanager> a,
+#criteria .navbar-inverse .nav #nav-criteria> a,
 .navbar-inverse .nav .active > a:hover,
 .navbar-inverse .nav .active > a:focus {
   color: #ffffff;

@@ -33,9 +33,9 @@
 				<div class="nav-collapse collapse ">
 					
 					<ul class="nav">
-						<li class=""><a href="/">Home</a></li>
-						<li class=""><a href="/project/view" >Project List</a></li >
-						<li class=""><a href="/vote">Vote</a></li>
+						<li class id="nav-home"><a href="/">Home</a></li>
+						<li class id="nav-projectlist"><a href="/project/view" >Project List</a></li >
+						<li class id="nav-vote"><a href="/vote">Vote</a></li>
 						<li class=""><a href="/logout">Logout</a></li> 
 						</ul>
 					</div>
@@ -54,9 +54,6 @@
 			@content
 		</div>
 	</div>
-
-	<script src="@routes.Assets.at("javascripts/prettify.js")" type="text/javascript"></script>
-	<script src="@routes.Assets.at("javascripts/bootstrap-affix.js")" type="text/javascript"></script>
 
 </body>
 </html>

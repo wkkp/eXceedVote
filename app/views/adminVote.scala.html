@@ -49,7 +49,7 @@
     });
 
     </script>
-<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" id="vote">
     <div class="container">
         <div class="row">
             <div class="span3 bs-docs-sidebar">
@@ -65,17 +65,16 @@
                 </ul>
             </div>
             <div class="span9">
-                <!-- <section id="ballotsection" style="page-break-after:always">
+                 <section id="ballotsection" style="page-break-after:always">
                     <div class="page-header">
                         <br></br>
                         <h1>Ballots</h1>
                     </div>   
                     <p class="lead" style="page-break-before:always">You have @user.ballotqnty ballot(s)</p>
-                </section> -->
+                </section> 
                 @for(project <- projects){
                     <section id="nav@project.pid" style="page-break-after:always">
                         <div class="page-header">
-                            <br></br>
                             <h1>@project.name</h1>
                         </div>   
                         <!-- <p class="lead" style="page-break-before:always"></p> -->
