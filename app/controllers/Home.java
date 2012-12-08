@@ -9,6 +9,7 @@ import java.util.*;
 import models.*;
 
 import views.html.*;
+import views.html.admin.*;
 
 /**
  * Manage projects related operations.
@@ -22,7 +23,7 @@ public class Home extends Controller {
 
 	public static Result home() {
 		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
-     		 return ok(views.html.adminHome.render(User.findByUsername(request().username()))
+     		 return ok(adminHome.render(User.findByUsername(request().username()))
      		 	);
  		}
 

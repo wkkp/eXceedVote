@@ -6,6 +6,7 @@ import play.data.*;
 
 import views.html.*;
 import models.*;
+import views.html.admin.*;
 
 /**
  * Manage projects related operations.
@@ -34,7 +35,7 @@ public class ProjectController extends Controller {
 
   	public static Result projectsList() {	
   			if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
-     		 return ok(views.html.adminProjectList.render(Project.findAllProject()
+     		 return ok(adminProjectList.render(Project.findAllProject()
  			 		, User.findByUsername(request().username())));
  		}
 
@@ -47,7 +48,7 @@ public class ProjectController extends Controller {
 		Form<Project> filledForm = projectForm.bindFromRequest();
 
 		if(filledForm.hasErrors()) {
-			return badRequest(views.html.adminProject.render(Project.findAllProject()
+			return badRequest(adminProject.render(Project.findAllProject()
 								 						, projectForm
 								 						, User.findByUsername(request().username()))
 			);

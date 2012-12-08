@@ -4,6 +4,7 @@ import play.*;
 import play.mvc.*;
 import play.data.*;
 import views.html.*;
+import views.html.admin.*;
 
 import models.*;
 
@@ -22,7 +23,7 @@ public class VoteController extends Controller {
 	public static Result vote(){
 
 		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
-     		 return ok(views.html.adminVote.render(Project.findAllProject()
+     		 return ok(adminVote.render(Project.findAllProject()
   				      , Criteria.all()
   				      , projectForm
   				      , ballotForm

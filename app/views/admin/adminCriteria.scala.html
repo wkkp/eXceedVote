@@ -15,6 +15,7 @@
 					<tr>
 						<th>ID</th>
 						<th>Criteria</th>
+						<th>Edit</th>
 						<th>Delete</th>
 					</tr> 
 				</thead>
@@ -23,6 +24,11 @@
 						<tr>
 							<td>@ct.cid</td>
 							<td>@ct.name</td>
+							<td>
+								@form(routes.CriteriaController.editCriteria(ct.cid)) {
+									<button type="submit" class="btn">Edit</input>
+								}
+							</td>
 							<td>
 								@form(routes.CriteriaController.deleteCriteria(ct.cid)) {
 									<button type="submit" class="btn btn-danger">Delete</input>
