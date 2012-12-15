@@ -2,15 +2,22 @@
 
 @import helper._
 
-@main("eXceed Vote", user) {
+@main_home("eXceed Vote", user) {
 
 	<body id="home">
 	<link href="@routes.Assets.at("stylesheets/jquery.countdown.css")" rel="stylesheet">
-	<style type="text/css">
-	#defaultCountdown { width: 450px; height: 50px; }
-	</style>
+
+	<link  media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.css")" rel="stylesheet">
+	<link href="@routes.Assets.at("bootstrap/css/bootstrap-responsive.css")" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("bootstrap/css/docs.css")">
+ 	<link href="@routes.Assets.at("stylesheets/kanisorn.css")" rel="stylesheet">
+	<link href="@routes.Assets.at("stylesheets/prettify.css")" rel="stylesheet">
+
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
 	<script type="text/javascript" src="@routes.Assets.at("stylesheets/jquery.countdown.js")"></script>
+	<script src="@routes.Assets.at("javascripts/century.js")" type="text/javascript"></script>
+
 	<script type="text/javascript">
 	$(function () {
 		var austDay = new Date();
@@ -19,12 +26,58 @@
 		$('#year').text(austDay.getFullYear());
 	});
 	</script>
+		<style type="text/css">
+			#defaultCountdown { width: 450px; height: 50px; }
+			body
+		{
+
+		background-color:#020508;
+		}
+
+		h1{ 
+			font-family: Century Gothic; 
+		}
+	</style>
 	<center>
 	<br>
-	<h2>Time Remaining</h2>
-	<br>
-	<div id="defaultCountdown"></div>
-	<br><br>
+	<div class="jumbotron2 " id="overview";  >
+		
+				<div class="container" >
+					<div class="span12" align="center">
+					<img src="@routes.Assets.at("images/exceed_logo_home.png")">
+					<br>
+					<h1><t>The better way to vote</h1>
+					</div>
+					<!-- <div id="defaultCountdown" class="span6"></div> -->
+
+					<div class="span12" style="background-color:#020508; color:#fff; opacity:0.8;margin-bottom:20px;margin-top:20px;" >
+						<br><br>
+						<div id="defaultCountdown" style="font-family: Century Gothic; "></div>
+						<br>
+					</div>
+					
+					<center>
+						<table>
+							<tr>
+								<td>
+									<div class="span2">
+									<a href="vote">
+									<img src="@routes.Assets.at("images/btn_vote.png")">
+									</a>
+									</div>
+								</td>
+								<td>
+									<div class="span2">
+										<a href="project/view">
+										<img src="@routes.Assets.at("images/btn_list.png")"></div>
+									  	</a>
+								</td>
+							</tr>
+						</table>
+					</center>
+					<br><br><br><br><br>
+	</div>
+
 	
 	</center>
 	</body>
