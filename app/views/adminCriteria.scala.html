@@ -6,7 +6,7 @@
 		<style type="text/css">
      	    .form-signin {
                 <map></map> x-width: 300px;
-                padding: 19px 29px 29px;
+                padding: 20px 20px 20px;
                 margin: 0 auto 20px;
                 background-color: #F0EEEE;
                 border: 1px solid #e5e5e5;
@@ -22,8 +22,8 @@
             .form-signin input[type="password"] {
                 font-size: 16px;
                 height: auto;
-                margin-bottom: 15px;
-                padding: 7px 9px;
+                margin-bottom: 5px;
+                padding: 2px 2px;
             }
         </style>
 
@@ -33,9 +33,10 @@
 			<div class="span6" style="margin-top:20px;margin-left:100px">
 				@form(routes.CriteriaController.newCriteria(), 'class -> "form-signin"){
 					<h2 class="form-signin-heading">Add criteria</h2>
-					@inputText(criteriaForm("name"), '_label-> "", 'class -> "input-block-level", 'placeholder -> "What Criteria")
+					
 					<div align="center">
-					<button class="btn btn-large btn-primary" type="submit">Add</button>
+						@inputText(criteriaForm("name"), '_label-> "", 'class -> "input-block-level", 'placeholder -> "Criteria")
+						<button class="btn btn-large btn-primary" type="submit">Add</button>
 					</div>
 				}
 			</div>
