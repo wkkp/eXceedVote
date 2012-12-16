@@ -4,15 +4,20 @@
 
 @adminMain("Criteria", user) {
 	<body id="criteria">
-		<center><h1>Criteria Management</h1></center>
+		
 		<div class="container">
+
+			<div class="marketing"><h1>Criteria Management</h1></div>
 			<h1>@criteria.size() criteria(s) </h1>
 
 			<div class="span6">
 				<h2 class="form-signin-heading">Add criteria</h2>
 				@form(routes.CriteriaController.newCriteria()){
-					@inputText(criteriaForm("name"), '_label-> "", 'class -> "input-block-level", 'placeholder -> "What Criteria")
+					@inputText(criteriaForm("name"),'_label-> "",'class -> "input-block-level", 'placeholder -> "What Criteria")
 					<button class="btn btn-large btn-primary" type="submit">Add</button>
+					<button class="btn btn-large btn-primary" type="reset">Cancel</button>	
+					
+					<input class="input-block-level" name="ballot_qnty" id="" value="1"></input>
 				}
 			</div>
 
@@ -32,7 +37,7 @@
 								@form(routes.CriteriaController.deleteCriteria(ct.cid)) {
 									<button type="submit" class="btn btn-danger">Delete</input>
 
-								}
+								}	
 							</td>
 						</tr>
 					}

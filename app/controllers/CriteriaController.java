@@ -17,7 +17,7 @@ public class CriteriaController extends Controller {
 
 	// public static Result index() {
 	//   return redirect(routes.Application.task());
-	// ok(index.render("Your new application is ready."));
+	// ok(index.render("Your new application is ready."));	
 	// }
 
 	public static Result criteria(){
@@ -49,10 +49,8 @@ public class CriteriaController extends Controller {
 	}
 
 	public static Result deleteCriteria(Long id) {
-		//System.out.println("----------------------");
 		Criteria.delete(id);
 		return redirect(routes.CriteriaController.criteria());
-		//return ok("Hello");
 	}
 
 }
