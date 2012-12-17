@@ -2,7 +2,7 @@
 
 @import helper._
 
-@adminMain("Home", user) {
+@adminMain("Home", "The better way to vote", user) {
 	<body id="home" >
 		<h1>Welcome! @user.username</h1>
 		@form(routes.Application.logout) {
