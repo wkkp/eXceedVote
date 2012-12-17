@@ -9,7 +9,8 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="criteria")
-public class Criteria extends Model {
+public class Criteria extends Model 
+{
 	@Id
 	public Long cid;
 	

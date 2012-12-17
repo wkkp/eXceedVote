@@ -1,3 +1,5 @@
+package dao;
+
 public class DaoFactory
 {
 	private static DaoFactory df = null;
@@ -20,7 +22,6 @@ public class DaoFactory
 		if (df == null) 
 		{
 			df = new DaoFactory();
-			
 		}
 
 		return df;

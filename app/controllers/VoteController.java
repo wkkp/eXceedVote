@@ -4,7 +4,7 @@ import play.*;
 import play.mvc.*;
 import play.data.*;
 import views.html.*;
-
+import dao.*;
 import models.*;
 
 /**
@@ -46,6 +46,7 @@ public class VoteController extends Controller {
 
 	public static Result saveProject(Long id){
 		return ok(vote.render(Project.findAllProject()
+		// return ok(vote.render(ProjectDao.findAllProject()
 				      , Criteria.all()
 				      , projectForm
 				      , ballotForm
@@ -60,6 +61,7 @@ public class VoteController extends Controller {
 		System.out.println(bff.get().score);
 		if (bff.get().score != 0)
 			Ballot.saveBallot(bff.get() , User.findByUsername(request().username()));
+		 //UserDao.findByUsername(request().username()));
 		else 
 			redirect(routes.VoteController.vote());
 		return TODO;

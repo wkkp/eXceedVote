@@ -21,14 +21,11 @@ public class User extends Model {
 	public String password;
 	public int ballotqnty;
 	//private String nontri_account;
-	private static final long serialVersionUID = 1L;
-
 	public static Model.Finder<String,User> find = new Model.Finder(String.class, User.class);
 
 	public User() {
 		super();
 	}
-
 	public User(String username, String password) {
 		super();
 		this.username = username;
@@ -70,7 +67,8 @@ public class User extends Model {
 		return 0;
 	}
 
-	public static User findByUsername(String username) {
+	public static User findByUsername(String username) 
+	{
 		return find.where()
                    .eq("username", username)
         		   .findUnique();

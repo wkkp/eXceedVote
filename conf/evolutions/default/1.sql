@@ -12,17 +12,26 @@ create table ballot (
   constraint pk_ballot primary key (bid))
 ;
 
+create table ballot)
+;
+
 create table criteria (
   cid                       bigint auto_increment not null,
   name                      varchar(255),
   constraint pk_criteria primary key (cid))
 ;
 
+create table criteria)
+;
+
 create table project (
   pid                       bigint auto_increment not null,
   name                      varchar(255),
-  description               varchar(255),
+  description               TEXT,
   constraint pk_project primary key (pid))
+;
+
+create table project)
 ;
 
 create table user (
@@ -34,6 +43,10 @@ create table user (
   constraint pk_user primary key (uid))
 ;
 
+create table user (
+  ballotqnty                integer)
+;
+
 
 
 
@@ -43,9 +56,17 @@ SET FOREIGN_KEY_CHECKS=0;
 
 drop table ballot;
 
+drop table ballot;
+
+drop table criteria;
+
 drop table criteria;
 
 drop table project;
+
+drop table project;
+
+drop table user;
 
 drop table user;
 
