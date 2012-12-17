@@ -17,14 +17,15 @@
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 	<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
 	<script src="@routes.Assets.at("bootstrap/js/bootstrap.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.at("javascripts/century.js")" type="text/javascript"></script>
 	<style type="text/css">
 		div{
-			font-family: Century Gothic; 
+			font-family: Century Gothic, "Helvetica Neue", Helvetica, Arial, sans-serif;
 		}
 	</style>
 </head>
 
-<header>
+<body style="background-image: url(/assets/images/bg_new.jpg)">
 	<div class="navbar navbar-inverse navbar-fixed-top ">
 		<div class="navbar-inner ">
 			<div class="container">
@@ -36,7 +37,7 @@
 				<p class="navbar-text pull-right"> 
 						<i class="icon-white icon-user"></i> @user.username&nbsp
 				</p>
-				<a class="brand" href="/"><img width="120px" height="600px" src="@routes.Assets.at("images/exceed_logo.png")"></a>
+				<a class="brand" href="/" style="float: left;"><img width="120px" height="600px" src="@routes.Assets.at("images/exceed_logo.png")"></a>
 				<div class="nav-collapse collapse ">
 					
 					<ul class="nav">
@@ -49,8 +50,6 @@
 				</div>
 			</div>
 		</div>
-	</header>
-	<body>
 		@content
 	</body>
 

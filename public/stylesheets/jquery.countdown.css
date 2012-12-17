@@ -37,11 +37,11 @@
 .countdown_section {
 	display: block;
 	float: left;
-	font-size: 150%;
+	font-size: 100%;
 	text-align: center;
 }
 .countdown_amount {
-	font-size: 200%;
+	font-size: 350%;
 }
 .countdown_descr {
 	display: block;
