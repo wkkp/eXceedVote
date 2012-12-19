@@ -6,15 +6,15 @@
 	<div class="container" align="center">
 
 			<div class="span6" style="margin-top:20px;margin-left:100px">
-				@form(routes.UserController.newUser(), 'class -> "form-signin"){
+				@form(routes.UserController.editUser(user.uid), 'class -> "form-signin"){
 					<h2 class="form-signin-heading">Add user</h2>
 					
 					<div align="center">
-						<input type="text" class="input-block-level" name="type_id" placeholder="type_id"></input>
-						<input type="text" class="input-block-level" name="username" placeholder="username"></input>
-						<input type="text" class="input-block-level" name="password" placeholder="password"></input>
+						<input type="text" class="input-block-level" name="type_id" placeholder="type_id" value = "@user.type_id"></input>
+						<input type="text" class="input-block-level" name="username" placeholder="username" value = "@user.username"></input>
+						<input type="text" class="input-block-level" name="password" placeholder="password" value = "@user.password"></input>
 
-						<button class="btn btn-large btn-primary" type="submit">Add</button>
+						<button class="btn btn-large btn-primary" type="submit">Save</button>
 						<button class="btn btn-large btn-danger" type="reset">Cancel</button>
 					</div>
 				}

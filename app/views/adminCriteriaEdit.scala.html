@@ -1,8 +1,8 @@
-@(criteria:List[Criteria],criteriaForm:Form[Criteria], user: User)
+@(criteria:List[Criteria],criteriaForm:Form[Criteria], user: User,cri: Criteria)
 
 @import helper._
 
-@adminMain("Criteria Manager", "Manage all criteria", user) {
+@adminMain("Criteria Manager", "Manage all of the criteria", user) {
 		<style type="text/css">
      	    .form-signin {
                 <map></map> x-width: 300px;
@@ -29,14 +29,13 @@
 
 	
 		<div class="container" align="center">
-
 			<div class="span6" style="margin-top:20px;margin-left:100px">
-				@form(routes.CriteriaController.newCriteria(), 'class -> "form-signin"){
+				@form(routes.CriteriaController.editCriteria(cri.cid), 'class -> "form-signin"){
 					<h2 class="form-signin-heading">Add criteria</h2>
 					
 					<div align="center">
-						<input type="text" class="input-block-level" name="name" placeholder="Criteria"></input>
-						<button class="btn btn-large btn-primary" type="submit">Add</button>
+						<input type="text" class="input-block-level" name="name" placeholder="Criteria" value = "@cri.name"></input>	
+						<button class="btn btn-large btn-primary" type="submit">Save</button>
 						<button class="btn btn-large btn-danger" type="reset">Cancel</button>
 					</div>
 				}
@@ -61,12 +60,10 @@
 							<td>
 								@form(routes.CriteriaController.deleteCriteria(ct.cid)) {
 									<button type="submit" class="btn btn-danger">Delete</input>
-
 								}
 
 								@form(routes.CriteriaController.getCriteria(ct.cid)) {
 									<button type="submit" class="btn btn-danger">Edit</input>
-
 								}
 
 							</td>
@@ -78,4 +75,5 @@
 			</div>
 		</div>
 	
+
 }

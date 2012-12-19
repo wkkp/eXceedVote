@@ -6,7 +6,9 @@ import play.db.ebean.*;
 import play.data.validation.Constraints.*;
 
 import javax.persistence.*;
-
+/**
+  * Criteria of eXceed vote.
+  */
 @Entity
 @Table(name="criteria")
 public class Criteria extends Model {
@@ -29,6 +31,17 @@ public class Criteria extends Model {
 
 	public static void delete(Long id){
 		find.ref(id).delete();
+	}
+
+	public static Criteria getCriteria(Long cid){
+		Criteria c = find.where()
+	    	         .eq("cid", cid)
+	            	 .findUnique();
+		return c;
+	}
+
+	public static void editCriteria(Long id,Criteria criteria){
+		criteria.update(id);
 	}
 
 	public static boolean checkExistCriteria(Criteria criteria){

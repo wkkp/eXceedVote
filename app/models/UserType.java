@@ -6,7 +6,9 @@ import javax.persistence.*;
 import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
-
+/**
+* Type of user that can vote.
+*/
 @Entity
 @Table (name="usertype")
 public class UserType extends Model {

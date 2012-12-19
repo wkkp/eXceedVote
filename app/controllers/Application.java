@@ -37,8 +37,10 @@ public class Application extends Controller {
     
     	public String validate() {
     		int type = User.register(username, password, verifyPassword);
-    		if(type == 0)
+    		if(type == 0)	
         		return "This username is not available";
+        	else if(type == 3)
+        		return "Please choose your username";
     		else if(type == 1)
 				return null;
 			else
