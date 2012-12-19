@@ -6,7 +6,9 @@ import play.db.ebean.*;
 import play.data.validation.Constraints.*;
 
 import javax.persistence.*;
-
+/**
+  * Criteria of eXceed vote.
+  */
 @Entity
 @Table(name="criteria")
 public class Criteria extends Model {

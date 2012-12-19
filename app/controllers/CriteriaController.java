@@ -8,7 +8,7 @@ import views.html.*;
 import models.*;
 
 /**
- * Manage projects related operations.
+ * Controller of criteria .
  */
 @Security.Authenticated(Secured.class)
 public class CriteriaController extends Controller {

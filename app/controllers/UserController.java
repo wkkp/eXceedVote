@@ -8,7 +8,7 @@ import views.html.*;
 import models.*;
 
 /**
- * Manage projects related operations.
+ * Controller of user 
  */
 @Security.Authenticated(Secured.class)
 public class UserController extends Controller {
