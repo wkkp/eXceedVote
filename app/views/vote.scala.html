@@ -54,81 +54,100 @@ $(document).ready(function(){
 });
 
 </script>
-    <h3>You have @user.ballotqnty ballot(s)</h3>
-    <div class="span12">
-        <div class="projectlist" align="center">
-        <h2>Total : @projects.size() project(s)</h2>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Project Name</th>
-                    <th>Project Description</th>
-                    <th>Vote</th>
-                </tr> 
-            </thead>
-            <tbody>
-                @for(project <- projects) {
-                    <tr>
-                        <td>@project.pid</td>
-                        <td>@project.name</td>
-                        <td>@project.description</td>
-                        <td>
-                            @if(user.ballotqnty > 0) {
-								<!-- Button to trigger modal -->
-								<a href="#" class="selectTeam">
-									<button onclick="savepjid('@project.pid')" id="@project.name" value="@project.pid" class="btn btn-success">
-									Choose
-									</button>
-								</a>
-							}
-                        </td>
-                    </tr>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" id="vote">
+    <div class="container">
+        <div class="row">
+            <div class="span3 bs-docs-sidebar">
+                <ul data-spy="affix" data-offset-top="200" class="nav nav-list bs-docs-sidenav affix-top">
+                    <!-- <li class="">
+                        <a href="#ballotsection"><i class="icon-chevron-right"></i>Ballots</a>
+                    </li> -->
+                    @for(project <- projects){
+                        <li class="">
+                            <a href="#nav@project.pid"><i class="icon-chevron-right"></i>@project.name</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="span9">
+                 <section id="ballotsection" style="page-break-after:always">
+                    <div style="color:#3344AA">
+                        <h1>You have @user.ballotqnty ballot(s) left</h1>
+                    </div>   
+                </section> 
+                @for(project <- projects){
+                    <section id="nav@project.pid" style="page-break-after:always">
+                        <div class="page-header">
+                            <h1>@project.name</h1>
+                        </div>   
+                        <!-- <p class="lead" style="page-break-before:always"></p> -->
+                        @for(ct <- criteria) {
+                            @form(routes.VoteController.voteForProject()) {
+                            <tr>
+                                <td><div class="span3">@ct.name</div></td>
+                                <td>
+                                        <button onclick="minusclick('(p@project.pid)(c@ct.cid)')"name="minus" id="m" type="button" class="btn btn-small btn-danger">-</button>
+                                </td>
+                                <td>
+                                        <input class="input-mini" name="ballot_qnty" id="(p@project.pid)(c@ct.cid)" value="1" readonly="readonly"></input>
+                                </td>
+                                <td>
+                                        <button onclick="plusclick('(p@project.pid)(c@ct.cid)')" name="plus" class="btn btn-small btn-danger" type="button">+</button>
+                                </td>
+                                <td>
+                                    <input name="user_id" value="@user.uid" type="hidden"></input>
+                                    <input name="project_id" id="c@ct.cid" type="hidden" value="@project.pid"></input>
+                                    <button class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+                                </td>
+                            </tr>
+                            } 
+                        }
+                    </section>
                 }
-                </tbody>
-        </table>
+            </div>
         </div>
+    </div>
 
-<div class="slidingDiv"> 
-	<a href="#" class="backToProject"><button class="btn btn-info">Back To ProjectList</button></a>
-	<h3 id="myModalLabel">Choose Criteria for team XXX</h3>
+    <div class="span12">
+        <div class="slidingDiv"> 
+            <a href="#" class="backToProject"><button class="btn btn-info">Back To ProjectList</button></a>
+            <h3 id="myModalLabel">Choose Criteria for team XXX</h3>
 
-	<div class="span9">
-		<table class="table table-striped" align="center">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Criteria</th>
-					<th>Score (MAX:10)</th>
-					<th>Vote</th>
-				</tr> 
-			</thead>
-			<tbody>
-					@for(ct <- criteria) {
-						@form(routes.VoteController.voteForProject()) {
-							<tr>
-								<td>@ct.cid</td>
-								<td>@ct.name</td>
-								<td>
-									<div>
-										<button onclick="minusclick('score(@ct.cid)')"name="minus" id="m" type="button" class="btn btn-mini btn-danger">-</button>
-										<input class="span1" name="ballot_qnty" id="score(@ct.cid)" value="1" readonly="readonly"></input>
-										<button onclick="plusclick('score(@ct.cid)')" name="plus" class="btn btn-mini btn-danger" type="button">+</button>
-									</div>
-								</td>
-								<td>
-										<input name="user_id" value="@user.uid" type="hidden"></input>
-										<input name="project_id" id="c@ct.cid" type="hidden"></input>
-										<button onmouseover="getpjid('c@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
-										
-								</td>
-							</tr>
-					   } 
-					}
-			</tbody>
-		</table>
-	</div>
-</div>
-</div>
+            <div class="span9">
+                <table class="table table-striped" align="center">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Criteria</th>
+                            <th>Score (MAX:10)</th>
+                            <th>Vote</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        @for(ct <- criteria) {
+                            @form(routes.VoteController.voteForProject()) {
+                            <tr>
+                                <td>@ct.cid</td>
+                                <td>@ct.name</td>
+                                <td>
+                                    <div>
+                                        <button onclick="minusclick('score(@ct.cid)')"name="minus" id="m" type="button" class="btn btn-small btn-danger">-</button>
+                                        <input class="input-mini" name="ballot_qnty" id="score(@ct.cid)" value="1" readonly="readonly"></input>
+                                        <button onclick="plusclick('score(@ct.cid)')" name="plus" class="btn btn-small btn-danger" type="button">+</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input name="user_id" value="@user.uid" type="hidden"></input>
+                                    <input name="project_id" id="c@ct.cid" type="hidden"></input>
+                                    <button onmouseover="getpjid('c@ct.cid')"class="btn btn-mini btn-primary" name="criteria_id" value="@ct.cid">VOTE</button>
+                                </td>
+                            </tr>
+                            } 
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 }
