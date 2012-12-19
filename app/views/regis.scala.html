@@ -6,6 +6,8 @@
 <head>
 	<title>Regis</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
+	<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap-responsive.css")">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 	<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="ext/javascript"></script>
 	<script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
@@ -40,11 +42,16 @@
 		padding: 7px 9px;
 	}
 	</style>
+	<style type="text/css">
+		div{
+			font-family: Century Gothic, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
 		<center><img src="@routes.Assets.at("images/logo_index.png")"></center>
-        <br>
+		<br>
 		@form(routes.Application.register, 'class -> "form-signin") {
 		<h2 class="form-signin-heading">Sign up</h2>
 		@if(regisForm.hasGlobalErrors) { 
@@ -56,6 +63,9 @@
 	<input type="password" name="password" class="input-block-level" placeholder="Password">
 	<input type="password" name="verifyPassword" class="input-block-level" placeholder="Reenter password">
 	<button class="btn btn-large btn-primary" type="submit">Sign up!</button>
+		}
+		@form(routes.Application.login, 'class -> "form-signin") {
+<button href="/login" class="btn btn-large btn-danger" type="submit">Cancel</button>
 }
 </div>
 </body>	
