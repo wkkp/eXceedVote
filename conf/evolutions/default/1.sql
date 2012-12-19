@@ -22,6 +22,8 @@ create table project (
   pid                       bigint auto_increment not null,
   name                      varchar(255),
   description               TEXT,
+  image_url                 varchar(255),
+  image_url2                varchar(255),
   constraint pk_project primary key (pid))
 ;
 

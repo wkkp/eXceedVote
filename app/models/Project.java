@@ -17,6 +17,8 @@ public class Project extends Model {
 	public String name;
 	@Column(columnDefinition = "TEXT")
 	public String description;
+	public String imageUrl;
+	public String imageUrl2;
 	
 	private static final long serialVersionUID = 1L;
 

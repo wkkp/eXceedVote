@@ -21,6 +21,7 @@ public class Home extends Controller {
 	}	
 
 	public static Result home() {
+		TimerSet ts = new TimerSet(25,12,2012);
 		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
      		 return ok(views.html.adminHome.render(User.findByUsername(request().username()))
      		 	);
@@ -28,7 +29,7 @@ public class Home extends Controller {
 
     	else{
 			return ok(home.render(
-			User.findByUsername(request().username()))
+			User.findByUsername(request().username()),ts ) 
 			);
 		}
 	}
