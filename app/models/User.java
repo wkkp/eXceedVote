@@ -67,7 +67,12 @@ public class User extends Model {
 
 	    if (u != null)
 	    	return 0;
-	    else if (!username.equals("") && !password.equals("") && !verifyPassword.equals("")) {
+	    else if(username.equals(""))
+		{
+			return 3;
+		}
+	    else if (!username.equals("") && !password.equals("") && !verifyPassword.equals("")) 
+	    {
 			if (password.equals(verifyPassword)) {
 				if (u == null) {
 					UserType utype = findType.where()
@@ -81,6 +86,7 @@ public class User extends Model {
 			else
 					return 2;
 		}
+
 		
 		return 0;
 	}
