@@ -1,12 +1,10 @@
 package models;
 
 import java.util.*;
-/*import javax.persistence.*;
 
-import play.db.ebean.*;
-import play.data.format.*;
-import play.data.validation.*;*/
-
+/*
+	Ballot box contains quantity of this ballot.
+*/
 public class BallotBox {
 
 	public int ballot_qnty;

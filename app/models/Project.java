@@ -6,7 +6,9 @@ import play.db.ebean.*;
 import play.data.validation.Constraints.*;
 
 import javax.persistence.*;
-
+/*
+	Information and structure of each project.
+ */
 @Entity
 @Table(name="project")
 public class Project extends Model {
@@ -31,7 +33,9 @@ public class Project extends Model {
 	public static List<Project> findAllProject(){
 		return find.all();
 	}
-
+    /*
+		Check if this project is exist in database.
+    */
 	public static boolean checkExistProject(Project project){
 		String query = "find project where name = :name";
 
@@ -47,7 +51,9 @@ public class Project extends Model {
 			return false;
 		}
 	}
-
+	/*
+	* delete project by id.
+	*/
 	public static void delete(Long id){
 		 find.ref(id).delete();
 	}	

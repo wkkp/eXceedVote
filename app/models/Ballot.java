@@ -6,6 +6,9 @@ import javax.persistence.*;
 import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
+/*
+ ballot collects information for voting
+*/
 
 @Entity
 @Table(name="ballot")
@@ -31,7 +34,7 @@ public class Ballot extends Model {
 		this.project_id = pid;
 		this.criteria_id = cid;
 	}
-
+	/* save ballot to database */
 	public static void saveBallot(Ballot ballot, User user, int qnty) {
 		Long tuser_id = ballot.user_id;
 		Long tproject_id = ballot.project_id;
