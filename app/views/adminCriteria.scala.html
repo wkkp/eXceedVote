@@ -2,7 +2,7 @@
 
 @import helper._
 
-@adminMain("Criteria Manager", user) {
+@adminMain("Criteria Manager", "Manage all of the criteria", user) {
 		<style type="text/css">
      	    .form-signin {
                 <map></map> x-width: 300px;
@@ -27,16 +27,17 @@
             }
         </style>
 
-	<body id="criteria">
-		<div class="container">
+	
+		<div class="container" align="center">
 
 			<div class="span6" style="margin-top:20px;margin-left:100px">
 				@form(routes.CriteriaController.newCriteria(), 'class -> "form-signin"){
 					<h2 class="form-signin-heading">Add criteria</h2>
 					
 					<div align="center">
-						@inputText(criteriaForm("name"), '_label-> "", 'class -> "input-block-level", 'placeholder -> "Criteria")
+						<input type="text" class="input-block-level" name="name" placeholder="Criteria"></input>
 						<button class="btn btn-large btn-primary" type="submit">Add</button>
+						<button class="btn btn-large btn-danger" type="reset">Cancel</button>
 					</div>
 				}
 			</div>
@@ -71,5 +72,5 @@
 			</table>
 			</div>
 		</div>
-	</body>
+	
 }

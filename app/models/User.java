@@ -27,6 +27,7 @@ public class User extends Model {
 
 	public static Model.Finder<String,User> find = new Model.Finder(String.class, User.class);
 	public static Model.Finder<Long,UserType> findType = new Finder(Long.class, UserType.class);
+	public static Model.Finder<Long, User> findId = new Model.Finder(Long.class, User.class);
 
 	public User() {
 		super();
@@ -96,6 +97,14 @@ public class User extends Model {
 	
 	public static int getUserTypeId(User user) {
  		return user.type_id;	
+ 	}
+
+ 	public static List<User> getAllUsers() {
+ 		return find.all();
+ 	}
+
+ 	public static void delete(Long id) {
+ 		findId.ref(id).delete();
  	}
 
 }

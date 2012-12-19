@@ -1,7 +1,7 @@
 @(projects:List[Project], criteria:List[Criteria], projectForm: Form[Project],ballotForm: Form[Ballot], user: User, boxForm: Form[BallotBox])
 
 @import helper._
-@adminMain("Vote", user) {
+@adminMain("Vote", "Vote for projects", user) {
 
     <script type="text/javascript">
     var pjid;
@@ -97,7 +97,7 @@
                             </tr>
                             } 
                         }
-                        <p class="lead" style="page-break-before:always">@project.description</p>
+                        
                     </section>
                 }
             </div>

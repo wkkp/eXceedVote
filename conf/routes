@@ -31,5 +31,12 @@ GET   	/project/view    			controllers.ProjectController.projectsList
 GET		/vote 						controllers.VoteController.vote()
 POST	/vote 						controllers.VoteController.voteForProject
 
+# User
+GET		/usermanager 				controllers.UserController.userManager
+POST 	/usermanager/:id/delete 	controllers.UserController.deleteUser(id:Long)
+
+# Result
+GET		/results					controllers.ResultController.results
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               	controllers.Assets.at(path="/public", file)
