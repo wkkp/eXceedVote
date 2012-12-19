@@ -32,12 +32,13 @@
 				<!--<form class="form-signin">-->
 				<h2 class="form-signin-heading">Add Project</h2>
 
-				@inputText(projectForm("name"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "name")
-				@textarea(projectForm("description"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "description")
-				@inputText(projectForm("imageUrl"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "image url")
-				@inputText(projectForm("imageUrl2"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "image url")
-		<input type="text" name="name" class="input-block-level" placeholder="Name">
-			<textarea type="text" name="description" class="input-block-level" placeholder="Description"></textarea>
+				<input type="text" name="name" class="input-block-level" placeholder="Name">
+				<textarea type="text" name="description" class="input-block-level" placeholder="Description"></textarea>
+
+				<input type="text" name="imageUrl" class="input-block-level" placeholder="image url">
+
+				<input type="text" name="imageUrl2" class="input-block-level" placeholder="image url">
+		
 				<div align="center">
 					<button class="btn btn-large btn-primary" type="submit">Add Project</button>
 					<button class="btn btn-large btn-danger" type="reset">Cancel</button></div>

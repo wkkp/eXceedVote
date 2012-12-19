@@ -33,8 +33,10 @@
 				<h2 class="form-signin-heading">Add Project</h2>
 				<!-- @inputText(projectForm("name"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "name")
 				@textarea(projectForm("description"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "description") -->
-		<input type="text" name="name" class="input-block-level" placeholder="Name" value="@pro.name">
-			<textarea type="text" name="description" class="input-block-level" placeholder="Description">@pro.name</textarea>
+			<input type="text" name="name" class="input-block-level" placeholder="Name" value="@pro.name">
+			<textarea type="text" name="description" class="input-block-level" placeholder="Description">@pro.description</textarea>
+			<input type="text" name="imageUrl" class="input-block-level" placeholder="image url" value = "@pro.imageUrl">
+			<input type="text" name="imageUrl2" class="input-block-level" placeholder="image url" value = "@pro.imageUrl2">
 				<div align="center">
 					<button class="btn btn-large btn-primary" type="submit">Save</button>
 					<button class="btn btn-large btn-danger" type="reset">Cancel</button></div>
