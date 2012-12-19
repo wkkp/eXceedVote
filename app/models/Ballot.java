@@ -45,4 +45,27 @@ public class Ballot extends Model {
 		
 		user.update();
 	}
+
+	public static List<Ballot> getAllBallots() {
+		return find.all();
+	}
+
+	public static List<Ballot> getBallotsById(Long pid) {
+		return find.where()
+				   .eq("project_id", pid)
+				   .findList();	
+	}
+
+	public static List<Ballot> getBallotsByCriteriaId(Long cid) {
+		return find.where()
+				   .eq("criteria_id", cid)
+				   .findList();	
+	}
+
+	public static List<Ballot> getBallotsByIdAndCriteriaId(Long pid, Long cid) {
+		return find.where()
+				   .eq("criteria_id", cid)
+				   .eq("project_id", pid)
+				   .findList();	
+	}
 }

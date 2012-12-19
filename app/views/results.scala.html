@@ -1,7 +1,62 @@
-@(user: User)
+@(user: User, ballotCalculator: BallotCalculator, projects: List[Project])
 
 @import helper._
 
 @main("Results", "Show results", user) {
+
+<div class="container">
+	<div class="span6">
+		<h1> Rankings </h1>
+		
+		@RankingsCalculator.calculateRank()
+		@RankingsCalculator.sortRank()
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Rank</th>
+					<th>Project Name</th>
+					<th>Score</th>
+				</tr> 
+			</thead>
+			<tbody>
+				@for(r <- RankingsCalculator.getRank()) {
+					<tr>
+						<td>@r(2)</td>
+						<td>@Project.findNameById(r(0))</td>
+						<td>@r(1)</td>
+					</tr>
+				}
+			</tbody>  
+		</table>
+	</div>
+
+	<div class="span6">
+		<h1> Criteria </h1>
+
+		@CriteriaCalculator.calculateCriteria()
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<!-- <th>Rank</th> -->
+					<th>Criterion Name</th>
+					<th>Project Name</th>
+					<th>Score</th>
+				</tr> 
+			</thead>
+			<tbody>
+				@for(c <- CriteriaCalculator.getRank()) {
+					<tr>
+						<!-- <td>@c(3)</td> -->
+						<td>@Criteria.findCriteriaNameById(c(0))</td>
+						<td>@Project.findNameById(c(1))</td>
+						<td>@c(2)</td>
+					</tr>
+				}
+			</tbody>  
+		</table>
+	</div>
+</div>
 
 }
