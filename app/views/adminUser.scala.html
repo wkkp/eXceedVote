@@ -2,8 +2,8 @@
 
 @import helper._
 
-@adminMain("Users", "Users manager", user) {
-	<div class="span8" style="margin-left:150px">
+@adminMain("Users Manager", "Users manager", user) {
+	<div class="span10">
 
 			<h2>@users.size() user(s)</h2>
 
@@ -14,6 +14,7 @@
 						<th>Type ID</th>
 						<th>User Name</th>
 						<th>Password</th>
+						<th>Edit</th>
 						<th>Delete</th>
 					</tr> 
 				</thead>
@@ -24,7 +25,11 @@
 						<td>@u.type_id</td>
 						<td>@u.username</td>
 						<td>@u.password</td>
+						<td>edit button</td>
 						<td>
+							@form(routes.UserController.deleteUser(u.uid)) {
+								<input type="submit" value="Delete" class="btn btn-danger">
+							}
 						</td>
 					</tr>
 					}
