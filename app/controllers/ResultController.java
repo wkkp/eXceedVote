@@ -17,10 +17,7 @@ public class ResultController extends Controller {
 	static CriteriaCalculator crankings = new CriteriaCalculator();
 			
 	public static Result results() {
-		return ok(views.html.results.render(User.findByUsername(request().username())
-										  , new BallotCalculator()
-										  , Project.findAllProject())
-				 );	
+		return ok(views.html.results.render(User.findByUsername(request().username())));	
 	}
 
 
