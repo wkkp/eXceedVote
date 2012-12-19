@@ -17,4 +17,9 @@ public class UserController extends Controller {
 		return ok(views.html.adminUser.render(User.getAllUsers()
 											, User.findByUsername(request().username())));
 	}
+
+	public static Result deleteUser(Long id) {
+		User.delete(id);
+		return redirect(routes.UserController.userManager());
+	}
 }

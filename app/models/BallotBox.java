@@ -22,5 +22,6 @@ public class BallotBox {
 			return true;
 		else
 			return false;	
-	}	
+	}
+		
 }
