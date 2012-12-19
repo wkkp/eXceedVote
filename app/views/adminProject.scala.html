@@ -31,10 +31,10 @@
 			@form(routes.ProjectController.addProject(), 'class -> "form-signin") {
 				<!--<form class="form-signin">-->
 				<h2 class="form-signin-heading">Add Project</h2>
-				@inputText(projectForm("name"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "name")
-				@textarea(projectForm("description"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "description")
-		<!--<input type="text" class="input-block-level" placeholder="Username">
-			<input type="password" class="input-block-level" placeholder="Password">-->
+				<!-- @inputText(projectForm("name"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "name")
+				@textarea(projectForm("description"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "description") -->
+		<input type="text" name="name" class="input-block-level" placeholder="Name">
+			<textarea type="text" name="description" class="input-block-level" placeholder="Description"></textarea>
 				<div align="center">
 					<button class="btn btn-large btn-primary" type="submit">Add Project</button>
 					<button class="btn btn-large btn-danger" type="reset">Cancel</button></div>
