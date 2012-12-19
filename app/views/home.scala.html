@@ -4,14 +4,14 @@
 
 @main_home("eXceed Vote", user) {
 
-	<body id="home">
+<body id="home">
 	<link href="@routes.Assets.at("stylesheets/jquery.countdown.css")" rel="stylesheet">
 
 	<link  media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.css")" rel="stylesheet">
 	<link href="@routes.Assets.at("bootstrap/css/bootstrap-responsive.css")" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("bootstrap/css/docs.css")">
- 	<link href="@routes.Assets.at("stylesheets/kanisorn.css")" rel="stylesheet">
+	<link href="@routes.Assets.at("stylesheets/kanisorn.css")" rel="stylesheet">
 	<link href="@routes.Assets.at("stylesheets/prettify.css")" rel="stylesheet">
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
@@ -21,67 +21,72 @@
 	<script type="text/javascript">
 	$(function () {
 		var austDay = new Date();
-		austDay = new Date(2012, 12-1, 20, 21, 00, 00, 00);
+		austDay = new Date(2012, 12-1, 18, 21, 00, 00, 00);
 		$('#defaultCountdown').countdown({until: austDay});
+		$('#defaultCountdown2').countdown({until: austDay});
 		$('#year').text(austDay.getFullYear());
 	});
 	</script>
-		<style type="text/css">
-			#defaultCountdown {  height: 60px; }
-			body
-		{
-
-		background-color:#020508;
-		}
-
-		h1{ 
-			font-family: Century Gothic; 
-		}
-	</style>
 	<center>
-	<br>
-	<div class="jumbotron2 " id="overview";  >
+
+		<div class="visible-desktop">
+			<br><br><br><br><br><br><br><br>
+		</div>
+		<div class="visible-tablet">
+			<br><br><br><br>
+		</div>
+		<!-- <div class="jumbotron" id="overview"> -->
+
+
 		
-				<div class="container" >
-					<div class="span12" align="center">
-					<img src="@routes.Assets.at("images/exceed_logo_home.png")">
-					<br>
-					<h1><t>The better way to vote</h1>
-					</div>
-					<!-- <div id="defaultCountdown" class="span6"></div> -->
+		<div class="container">
+			<div class="span12" align="center">
+				<img src="@routes.Assets.at("images/exceed_logo_home.png")">
+				<!-- <br> -->
+				<h1 style="color: white; font-size: 50px;">Time remaining</h1>
+			</div>
 
-					<div class="span12" style="background-color:#020508; color:#fff; opacity:0.8;margin-bottom:50px;margin-top:20px;" >
-						<br><br>
-						<div style="width:350px">
-						<div id="defaultCountdown" style="font-family: Century Gothic; "></div>
-						</div>
-						<br>
-					</div>
-					
-					<center>
-						<table>
-							<tr>
-								<td>
-									<div class="span2">
-									<a href="vote">
-									<img src="@routes.Assets.at("images/btn_vote.png")">
-									</a>
-									</div>
-								</td>
-								<td>
-									<div class="span2">
-										<a href="project/view">
-										<img src="@routes.Assets.at("images/btn_list.png")"></div>
-									  	</a>
-								</td>
-							</tr>
-						</table>
-					</center>
-					<br><br><br><br><br>
-	</div>
 
-	
-	</center>
+			<div class="span12" align="center" style="margin-bottom:50px;margin-top:20px;" >
+				<br><br>
+				<div align="center" class="hidden-phone" style="width: 500px;color: white; font-size:20px;">
+					<div id="defaultCountdown"></div>
+				</div>
+
+				<div align="center" class="visible-phone" style="color: white; font-size:18px; font-family: Century Gothic, "Helvetica Neue", Helvetica, Arial, sans-serif;">
+					<div id="defaultCountdown2"></div>
+				</div>
+
+				<br><br>
+			</div>
+
+			<div class="container hidden-phone">
+				<a href="vote">
+					<button class="offset4 span2 btn btn-large btn-danger" type="submit">Vote Now</button>
+					<!-- <img src="@routes.Assets.at("images/btn_vote.png")"> -->
+				</a>
+
+				<a href="project/view">
+					<button class="span2 btn btn-large btn-primary" type="submit">Projects Page</button>
+					<!-- <img src="@routes.Assets.at("images/btn_list.png")"></div> -->
+				</a>
+			</div>
+			<div class="container visible-phone">
+				<a href="vote">
+					<button class="span1 btn btn-large btn-danger" type="submit">Vote Now</button>
+					<!-- <img src="@routes.Assets.at("images/btn_vote.png")"> -->
+				</a>
+			</div>
+			<div class="container visible-phone">
+				<br>
+				<a href="project/view">
+					<button class="span1 btn btn-large btn-primary" type="submit">Projects Page</button>
+					<!-- <img src="@routes.Assets.at("images/btn_list.png")"></div> -->
+				</a>
+			</div>
+			<br><br>
+			<!-- </div> -->
+		</center>
 	</body>
 
 }
