@@ -34,7 +34,8 @@ public class Project extends Model {
 		return find.all();
 	}
     /*
-		Check if this project is exist in database.
+	*
+	*	Check if this project is exist in database.
     */
 	public static boolean checkExistProject(Project project){
 		String query = "find project where name = :name";

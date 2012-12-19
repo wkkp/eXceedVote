@@ -5,7 +5,10 @@ import play.mvc.*;
 import play.mvc.Http.*;
 
 import models.*;
-
+/**
+ *  Security class for eXceed Vote.
+ *
+ */
 public class Secured extends Security.Authenticator {
     
    	@Override
