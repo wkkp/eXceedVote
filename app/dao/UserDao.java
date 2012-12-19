@@ -1,5 +1,7 @@
-public class UserDao {
-	public UserDao() {
+public class UserDao 
+{
+	public UserDao() 
+	{
 		
 	}
 }

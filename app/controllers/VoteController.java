@@ -8,7 +8,7 @@ import views.html.*;
 import models.*;
 
 /**
- * Manage projects related operations.
+ * Controller of vote model contact with their view.
  */
 @Security.Authenticated(Secured.class)
 public class VoteController extends Controller {

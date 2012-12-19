@@ -67,7 +67,12 @@ public class User extends Model {
 
 	    if (u != null)
 	    	return 0;
-	    else if (!username.equals("") && !password.equals("") && !verifyPassword.equals("")) {
+	    else if(username.equals(""))
+		{
+			return 3;
+		}
+	    else if (!username.equals("") && !password.equals("") && !verifyPassword.equals("")) 
+	    {
 			if (password.equals(verifyPassword)) {
 				if (u == null) {
 					UserType utype = findType.where()
@@ -81,10 +86,13 @@ public class User extends Model {
 			else
 					return 2;
 		}
-		
+
+			
 		return 0;
 	}
-
+	/**
+	 * find user by username.
+	*/
 	public static User findByUsername(String username) {
 		return find.where()
                    .eq("username", username)
@@ -106,5 +114,27 @@ public class User extends Model {
  	public static void delete(Long id) {
  		findId.ref(id).delete();
  	}
+
+ 	public static User getUser(Long uid){	
+		User u = find.where()
+	    	         .eq("uid", uid)
+	            	 .findUnique();
+		return u;
+	}
+
+	public static User setUserBallotQuantity(User user) {
+			UserType utype = findType.where()
+										 .eq("user_type", user.type_id)
+										 .findUnique();
+			user.ballotqnty = utype.ballot_qnty;
+			return user;
+	}
+
+	public static void editUser(Long id,User user){
+		user = setUserBallotQuantity(user);
+		user.update(id);
+	}
+
+
 
 }

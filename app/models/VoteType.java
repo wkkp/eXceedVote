@@ -6,7 +6,9 @@ import javax.persistence.*;
 import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
-
+/*
+* Vote type for voting.
+*/
 @Entity
 @Table (name="votetype")
 public class VoteType extends Model {
@@ -17,7 +19,9 @@ public class VoteType extends Model {
 	public int vote_type;
 	public int vote_criterion;
 	
-	private static final long serialVersionUID = 1L;	public VoteType() {
+	private static final long serialVersionUID = 1L;
+
+	public VoteType() {
 		super();		
 	}
 
