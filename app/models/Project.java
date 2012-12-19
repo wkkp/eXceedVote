@@ -59,7 +59,6 @@ public class Project extends Model {
 		 find.ref(id).delete();
 	}
 
-<<<<<<< HEAD
 	public static Project getProject(Long pid){
 		 Project p = find.where()
 	    	         .eq("pid", pid)
@@ -70,9 +69,8 @@ public class Project extends Model {
 	public static void editProject(Long id,Project project){
 		project.update(id);
 	}	
-=======
+
 	public static String findNameById(Long id) {
 		return find.ref(id).name;
 	}
->>>>>>> vote-module
 }
