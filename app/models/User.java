@@ -98,4 +98,8 @@ public class User extends Model {
  		return user.type_id;	
  	}
 
+ 	public static List<User> getAllUsers() {
+ 		return find.all();
+ 	}
+
 }
