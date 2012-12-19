@@ -6,7 +6,9 @@ import javax.persistence.*;
 import play.db.ebean.*;
 import play.data.format.*;
 import play.data.validation.*;
-
+/*
+	Set valid time of voting by date.
+*/
 public class TimerSet extends Model {
 	
 	private static int day;
