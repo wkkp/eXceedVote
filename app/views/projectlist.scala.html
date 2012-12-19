@@ -1,8 +1,42 @@
 @(projects: List[Project], user: User)
 
 @import helper._
+<<<<<<< HEAD
     
      @main("Projects", "All exceed projects", user) {
+=======
+
+
+@main("Projects", "All projects", user) {
+
+<script type="text/javascript" src="@routes.Assets.at("stylesheets/highslide-with-gallery.js")"></script>
+<link rel="stylesheet" type="text/css" href="@routes.Assets.at("stylesheets/highslide.css")" />
+
+<script type="text/javascript">
+hs.graphicsDir = 'assets/highslide/graphics/';
+hs.align = 'center';
+hs.transitions = ['expand', 'crossfade'];
+hs.outlineType = 'rounded-white';
+hs.fadeInOut = true;
+hs.numberPosition = 'caption';
+hs.dimmingOpacity = 0.75;
+
+// Add the controlbar
+if (hs.addSlideshow) hs.addSlideshow({
+  //slideshowGroup: 'group1',
+  interval: 5000,
+  repeat: false,
+  useControls: true,
+  fixedControls: 'fit',
+  overlayOptions: {
+    opacity: .75,
+    position: 'bottom center',
+    hideOnMouseOut: true
+  }
+});
+  </script>
+
+>>>>>>> fix conflict
   <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" id="projectlist">
 
     <div class="container">
