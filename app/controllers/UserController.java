@@ -8,13 +8,20 @@ import views.html.*;
 import models.*;
 
 /**
+<<<<<<< HEAD
  * Manage projects related operations.
+=======
+ * Controller of user 
+>>>>>>> f28048d5f5b772f31facb37f886670087588f3ba
  */
 @Security.Authenticated(Secured.class)
 public class UserController extends Controller {
 
+<<<<<<< HEAD
 	static Form<User> userForm = form(User.class);
 
+=======
+>>>>>>> f28048d5f5b772f31facb37f886670087588f3ba
 	public static Result userManager() {
 		return ok(views.html.adminUser.render(User.getAllUsers()
 											, User.findByUsername(request().username())));
@@ -24,6 +31,7 @@ public class UserController extends Controller {
 		User.delete(id);
 		return redirect(routes.UserController.userManager());
 	}
+<<<<<<< HEAD
 
 	public static Result newUser(){
 		Form<User> filledForm = userForm.bindFromRequest();
@@ -49,4 +57,6 @@ public class UserController extends Controller {
 		
 	}	
 
+=======
+>>>>>>> f28048d5f5b772f31facb37f886670087588f3ba
 }

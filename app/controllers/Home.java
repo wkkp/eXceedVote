@@ -11,7 +11,7 @@ import models.*;
 import views.html.*;
 
 /**
- * Manage projects related operations.
+ *  Home page of eXceed vote .
  */
 @Security.Authenticated(Secured.class)
 public class Home extends Controller {
