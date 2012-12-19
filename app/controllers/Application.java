@@ -86,7 +86,7 @@ public class Application extends Controller {
 	 */
 	public static Result regis() {
 		return ok(
-			regis.render(form(Regis.class))
+			views.html.regis.render(form(Regis.class))
 		);	
 	}
 

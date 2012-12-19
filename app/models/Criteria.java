@@ -60,5 +60,8 @@ public class Criteria extends Model {
 		}
 	}
 
+	public static String findCriteriaNameById(Long id) {
+		return find.ref(id).name;
+	}
 	
 }
