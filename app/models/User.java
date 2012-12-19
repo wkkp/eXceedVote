@@ -87,7 +87,7 @@ public class User extends Model {
 					return 2;
 		}
 
-		
+			
 		return 0;
 	}
 	/**
@@ -114,5 +114,27 @@ public class User extends Model {
  	public static void delete(Long id) {
  		findId.ref(id).delete();
  	}
+
+ 	public static User getUser(Long uid){	
+		User u = find.where()
+	    	         .eq("uid", uid)
+	            	 .findUnique();
+		return u;
+	}
+
+	public static User setUserBallotQuantity(User user) {
+			UserType utype = findType.where()
+										 .eq("user_type", user.type_id)
+										 .findUnique();
+			user.ballotqnty = utype.ballot_qnty;
+			return user;
+	}
+
+	public static void editUser(Long id,User user){
+		user = setUserBallotQuantity(user);
+		user.update(id);
+	}
+
+
 
 }

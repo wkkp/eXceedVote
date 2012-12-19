@@ -36,8 +36,11 @@ GET		/vote 						controllers.VoteController.vote()
 POST	/vote 						controllers.VoteController.voteForProject
 
 # User
-GET		/usermanager 				controllers.UserController.userManager
+GET		/usermanager 				controllers.UserController.userManager()
 POST 	/usermanager/:id/delete 	controllers.UserController.deleteUser(id:Long)
+POST    /usermanager                controllers.UserController.newUser()
+POST    /usermanager/edit			controllers.UserController.getUser(id: Long)
+POST   	/usermanager/:id/edit		controllers.UserController.editUser(id:Long)
 
 # Result
 GET		/results					controllers.ResultController.results

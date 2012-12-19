@@ -30,7 +30,7 @@ public class CriteriaController extends Controller {
 		}
 
 	public static Result newCriteria(){
-		System.out.println("eiei");
+		
 		Form<Criteria> filledForm = criteriaForm.bindFromRequest();
 		if(filledForm.hasErrors()){
 			return badRequest(views.html.adminCriteria.render(Criteria.all(),filledForm, User.findByUsername(request().username())));
