@@ -90,7 +90,9 @@ public class User extends Model {
 		
 		return 0;
 	}
-
+	/**
+	 * find user by username.
+	*/
 	public static User findByUsername(String username) {
 		return find.where()
                    .eq("username", username)
