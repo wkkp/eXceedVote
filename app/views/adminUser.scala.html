@@ -1,0 +1,35 @@
+@(users: List[User], user: User)
+
+@import helper._
+
+@adminMain("Users", "Users manager", user) {
+	<div class="span8" style="margin-left:150px">
+
+			<h2>@users.size() user(s)</h2>
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Type ID</th>
+						<th>User Name</th>
+						<th>Password</th>
+						<th>Delete</th>
+					</tr> 
+				</thead>
+				<tbody>
+					@for(u <- users) {
+					<tr>
+						<td>@u.uid</td>
+						<td>@u.type_id</td>
+						<td>@u.username</td>
+						<td>@u.password</td>
+						<td>
+						</td>
+					</tr>
+					}
+
+				</tbody>  
+			</table>
+		</div>
+}
