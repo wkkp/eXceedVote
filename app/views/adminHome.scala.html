@@ -2,9 +2,8 @@
 
 @import helper._
 
-@adminMain("Home", user) {
+@adminMain("Home", "The better way to vote", user) {
 	<body id="home" >
-	<div style="margin-left:150px">
 		<h1>Welcome! @user.username</h1>
 		@form(routes.Application.logout) {
 			<button class="btn btn-large btn-danger" type="submit">Sign out</button>	
@@ -12,6 +11,5 @@
 		@form(routes.VoteController.vote) {
 			<button class="btn btn-large btn-warning" type="submit">Vote</button>
 		}
-	</div>
 </body>
 }
