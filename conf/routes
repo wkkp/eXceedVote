@@ -18,11 +18,15 @@ POST	/regis 						controllers.Application.register
 GET 	/criteria  					controllers.CriteriaController.criteria()
 POST	/criteria 					controllers.CriteriaController.newCriteria()
 POST	/criteria/:id/delete		controllers.CriteriaController.deleteCriteria(id: Long)
+POST    /criteria/edit				controllers.CriteriaController.getCriteria(id: Long)
+POST   	/criteria/:id/edit			controllers.CriteriaController.editCriteria(id:Long)
 
 # Project
 GET		/project 					controllers.ProjectController.projects()
 POST	/project 					controllers.ProjectController.addProject()
 POST	/project/:id/delete 		controllers.ProjectController.deleteProject(id:Long)
+POST    /project/edit				controllers.ProjectController.getProject(id: Long)
+POST   	/project/:id/edit			controllers.ProjectController.editProject(id:Long)
 
 # ProjectList
 GET   	/project/view    			controllers.ProjectController.projectsList

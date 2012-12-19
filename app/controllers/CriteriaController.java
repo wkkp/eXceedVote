@@ -21,6 +21,7 @@ public class CriteriaController extends Controller {
 	// }
 
 	public static Result criteria(){
+
 		if(User.getUserTypeId(User.findByUsername(request().username())) == 9) {
 			return ok(views.html.adminCriteria.render(Criteria.all(),criteriaForm, User.findByUsername(request().username())));
 		}
@@ -29,6 +30,7 @@ public class CriteriaController extends Controller {
 		}
 
 	public static Result newCriteria(){
+		System.out.println("eiei");
 		Form<Criteria> filledForm = criteriaForm.bindFromRequest();
 		if(filledForm.hasErrors()){
 			return badRequest(views.html.adminCriteria.render(Criteria.all(),filledForm, User.findByUsername(request().username())));
@@ -40,13 +42,23 @@ public class CriteriaController extends Controller {
 			}
 
 			else{
-
 				return redirect(routes.CriteriaController.criteria());
 			}
-			
-			
 		}
 	}
+
+	public static Result getCriteria(Long id){
+		return ok(views.html.adminCriteriaEdit.render(Criteria.all(),criteriaForm, User.findByUsername(request().username()),Criteria.getCriteria(id) ));
+	}
+
+	public static Result editCriteria(Long id){
+		
+		Form<Criteria> filledForm = criteriaForm.bindFromRequest();
+
+		Criteria.editCriteria(id,filledForm.get());
+
+		return redirect(routes.CriteriaController.criteria());
+	}	
 
 	public static Result deleteCriteria(Long id) {
 		//System.out.println("----------------------");

@@ -56,5 +56,16 @@ public class Project extends Model {
 	*/
 	public static void delete(Long id){
 		 find.ref(id).delete();
+	}
+
+	public static Project getProject(Long pid){
+		 Project p = find.where()
+	    	         .eq("pid", pid)
+	            	 .findUnique();
+		return p;
+	}
+
+	public static void editProject(Long id,Project project){
+		project.update(id);
 	}	
 }

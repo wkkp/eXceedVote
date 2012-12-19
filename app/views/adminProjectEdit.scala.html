@@ -1,8 +1,8 @@
-@(projects: List[Project], projectForm: Form[Project], user: User)
+@(projects: List[Project], projectForm: Form[Project], user: User,pro :Project)
 
 @import helper._
 
-@adminMain("Project Manager", "Manage all exceed projects", user) {
+@adminMain("Project manager", "Manage all of the projects", user) {
 	<style type="text/css">
      	    .form-signin {
                 <map></map> x-width: 300px;
@@ -28,18 +28,15 @@
         </style>
 	<body id="projectmanager">
 		<div class="container span6" style="margin-top:20px;margin-left:150px">
-			@form(routes.ProjectController.addProject(), 'class -> "form-signin") {
+			@form(routes.ProjectController.editProject(pro.pid), 'class -> "form-signin") {
 				<!--<form class="form-signin">-->
 				<h2 class="form-signin-heading">Add Project</h2>
-
-				@inputText(projectForm("name"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "name")
-				@textarea(projectForm("description"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "description")
-				@inputText(projectForm("imageUrl"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "image url")
-				@inputText(projectForm("imageUrl2"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "image url")
-		<input type="text" name="name" class="input-block-level" placeholder="Name">
-			<textarea type="text" name="description" class="input-block-level" placeholder="Description"></textarea>
+				<!-- @inputText(projectForm("name"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "name")
+				@textarea(projectForm("description"), '_label -> "", 'class -> "input-block-level", 'placeholder -> "description") -->
+		<input type="text" name="name" class="input-block-level" placeholder="Name" value="@pro.name">
+			<textarea type="text" name="description" class="input-block-level" placeholder="Description">@pro.name</textarea>
 				<div align="center">
-					<button class="btn btn-large btn-primary" type="submit">Add Project</button>
+					<button class="btn btn-large btn-primary" type="submit">Save</button>
 					<button class="btn btn-large btn-danger" type="reset">Cancel</button></div>
 				<!--</form>-->
 			}

@@ -31,6 +31,17 @@ public class Criteria extends Model {
 		find.ref(id).delete();
 	}
 
+	public static Criteria getCriteria(Long cid){
+		Criteria c = find.where()
+	    	         .eq("cid", cid)
+	            	 .findUnique();
+		return c;
+	}
+
+	public static void editCriteria(Long id,Criteria criteria){
+		criteria.update(id);
+	}
+
 	public static boolean checkExistCriteria(Criteria criteria){
 		String query = "find criteria where name = :name";
 

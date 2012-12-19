@@ -63,4 +63,20 @@ public class ProjectController extends Controller {
 			}
 		}
 	}
+
+	public static Result getProject(Long id){
+		return ok(views.html.adminProjectEdit.render(Project.findAllProject()
+								 						, projectForm
+								 						, User.findByUsername(request().username())
+														, Project.getProject(id)
+			));
+	}
+
+	public static Result editProject(Long id){
+		Form<Project> filledForm = projectForm.bindFromRequest();
+
+		Project.editProject(id,filledForm.get());
+
+		return redirect(routes.ProjectController.projects());
+	}	
 }
