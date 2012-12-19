@@ -2,38 +2,76 @@
 
 @import helper._
     
-@adminMain("Projects", "All exceed projects", user) {
-  
+     @adminMain("Projects", "All exceed projects", user) {
   <body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true" id="projectlist">
 
-  <div class="container">
+    <div class="container">
     <!-- Docs nav
     ================================================== -->
     <div class="row">
       <div class="span3 bs-docs-sidebar">
         <ul data-spy="affix" data-offset-top="200" class="nav nav-list bs-docs-sidenav affix-top">
-            @for(project <- projects){
-				<li class="">
-                  <a href="#@project.pid"><i class="icon-chevron-right"></i> @project.name</a></li>
-            }
-        </ul>
-      </div>
-      <div class="span9">
+          @for(project <- projects){
+          <li class=""><a href="#@project.pid"><i class="icon-chevron-right"></i> @project.name</a></li>
+        }
+      </ul>
+    </div>
+    <div class="span9">
 
         <!-- ProjectList
         =================================================  -->
-            @for(project <- projects){
-            <section id="@project.pid" style="page-break-after:always">
+        @for(project <- projects){
+        <section id="@project.pid" style="page-break-after:always">
           <div class="page-header">
-            <br></br>
             <h1>@project.name</h1>
           </div>   
           <p class="lead" style="page-break-before:always">@project.description</p>
-        </section>
+          <div class="container">
+          <div class="span2">
+         <!--  <img src="@project.imageUrl"><br> -->
+         @if(project.imageUrl != null) {
+         <a href="#pic1_@project.pid" role="button" class="btn" data-toggle="modal">
+          <img src="@project.imageUrl" width="250px" height="250px">
+         </a>
+
+
+           <div id="pic1_@project.pid" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3 id="myModalLabel">@project.name</h3>
+            </div>
+            <div class="modal-body">
+              <center><img src="@project.imageUrl"></center>
+            </div>
             }
+          </div>
+        </div>
+        <div class="span2">
+
+          @if(project.imageUrl2 != null) {
+         <a href="#pic2_@project.pid" role="button" class="btn" data-toggle="modal">
+          <img src="@project.imageUrl2" width="250px" height="250px">
+         </a>
+
+         <div id="pic2_@project.pid" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">@project.name</h3>
+          </div>
+          <div class="modal-body">
+              <center><img src="@project.imageUrl2"></center>
+          </div>
+          }
+        </div>
       </div>
+
+    </div>
+
+        </section>
+      }
     </div>
   </div>
+</div>
 
     <!-- Footer
     ================================================== -->
@@ -42,6 +80,6 @@
         <p class="pull-right"><a href="#">Back to top</a></p>
       </div>
     </footer>
-}
+  }
   
 
