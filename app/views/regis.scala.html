@@ -42,6 +42,11 @@
 		padding: 7px 9px;
 	}
 	</style>
+	<style type="text/css">
+		div{
+			font-family: Century Gothic, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -58,6 +63,9 @@
 	<input type="password" name="password" class="input-block-level" placeholder="Password">
 	<input type="password" name="verifyPassword" class="input-block-level" placeholder="Reenter password">
 	<button class="btn btn-large btn-primary" type="submit">Sign up!</button>
+		}
+		@form(routes.Application.login, 'class -> "form-signin") {
+<button href="/login" class="btn btn-large btn-danger" type="submit">Cancel</button>
 }
 </div>
 </body>	
