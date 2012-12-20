@@ -21,15 +21,15 @@
 	<script type="text/javascript">
 	$(function () {
 		var austDay = new Date();
-		austDay = new Date(2012, 12-1, 20, 11, 30, 00, 00);
+		austDay = new Date(2012, 12-1, 20, 12, 13, 30, 00);
 		$('#defaultCountdown').countdown({until: austDay});
 		$('#defaultCountdown2').countdown({until: austDay});
 		$('#year').text(austDay.getFullYear());
 	});
 
 	$(function () {
-		if (new Date() - new Date(2012, 12-1, 20, 11, 30, 00, 00) < 0) {
-			setTimeout(function(){$('#votebutton').hide(); $('#votebutton2').hide();},(Math.abs(new Date() - new Date(2012, 12-1, 20, 11, 30, 00, 00))));
+		if (new Date() - new Date(2012, 12-1, 20, 12, 13, 30, 00) < 0) {
+			setTimeout(function(){$('#votebutton').hide(); $('#votebutton2').hide();},(Math.abs(new Date() - new Date(2012, 12-1, 20, 12, 13, 30, 00))));
 		}
 		else {
 			$('#votebutton').hide();
