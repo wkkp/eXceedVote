@@ -4621,6 +4621,8 @@ input[type="submit"].btn.btn-mini {
 #projectlist .navbar-inverse .nav #nav-projectlist> a,
 #projectmanager .navbar-inverse .nav #nav-projectmanager> a,
 #criteria .navbar-inverse .nav #nav-criteria> a,
+#usermanager .navbar-inverse .nav #nav-usermanager> a,
+#system .navbar-inverse .nav #nav-system> a,
 .navbar-inverse .nav .active > a:hover,
 .navbar-inverse .nav .active > a:focus {
   color: #ffffff;

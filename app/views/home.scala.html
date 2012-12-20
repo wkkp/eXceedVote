@@ -21,11 +21,12 @@
 	<script type="text/javascript">
 	$(function () {
 		var austDay = new Date();
-		austDay = new Date(2012, 12-1, 25, 21, 00, 00, 00);
+		austDay = new Date(2012, 12-1, 20, 8, 00, 00, 00);
 		$('#defaultCountdown').countdown({until: austDay});
 		$('#defaultCountdown2').countdown({until: austDay});
 		$('#year').text(austDay.getFullYear());
 	});
+
 	</script>
 		<style type="text/css">
 			#defaultCountdown {  height: 60px; }
@@ -39,6 +40,7 @@
 			font-family: Century Gothic,Menlo,Monaco,Consolas,monospace; 
 		}
 	</style>
+
 	<center>
 
 		<div class="visible-desktop">
@@ -55,7 +57,7 @@
 			<div class="span12" align="center">
 				<img src="@routes.Assets.at("images/exceed_logo_home.png")">
 				<!-- <br> -->
-				<h1 style="color: white; font-size: 50px;">Time remaining</h1>
+				<h1 style="color: white; font-size: 50px; font-family: Century Gothic, "Helvetica Neue", Helvetica, Arial, sans-serif;">Time remaining</h1>
 			</div>
 
 
