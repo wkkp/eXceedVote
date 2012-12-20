@@ -21,10 +21,20 @@
 	<script type="text/javascript">
 	$(function () {
 		var austDay = new Date();
-		austDay = new Date(2012, 12-1, 20, 8, 00, 00, 00);
+		austDay = new Date(2012, 12-1, 20, 11, 30, 00, 00);
 		$('#defaultCountdown').countdown({until: austDay});
 		$('#defaultCountdown2').countdown({until: austDay});
 		$('#year').text(austDay.getFullYear());
+	});
+
+	$(function () {
+		if (new Date() - new Date(2012, 12-1, 20, 11, 30, 00, 00) < 0) {
+			setTimeout(function(){$('#votebutton').hide(); $('#votebutton2').hide();},(Math.abs(new Date() - new Date(2012, 12-1, 20, 11, 30, 00, 00))));
+		}
+		else {
+			$('#votebutton').hide();
+			$('#votebutton2').hide();
+		}
 	});
 
 	</script>
@@ -37,7 +47,7 @@
 		}
 
 		h1{ 
-			font-family: Century Gothic,Menlo,Monaco,Consolas,monospace; 
+			font-family: Century Gothic, "Helvetica Neue", Helvetica, Arial, sans-serif; 
 		}
 	</style>
 
@@ -74,8 +84,8 @@
 				<br><br>
 			</div>
 
-			<div class="container hidden-phone">
-				<a href="vote">
+			<div class="container hidden-phone" id="votebutton">
+				<a href="vote" >
 					<button class="offset4 span2 btn btn-large btn-danger" type="submit">Vote Now</button>
 					<!-- <img src="@routes.Assets.at("images/btn_vote.png")"> -->
 				</a>
@@ -85,7 +95,8 @@
 					<!-- <img src="@routes.Assets.at("images/btn_list.png")"></div> -->
 				</a>
 			</div>
-			<div class="container visible-phone">
+
+			<div class="container visible-phone" id="votebutton2">
 				<a href="vote">
 					<button class="span1 btn btn-large btn-danger" type="submit">Vote Now</button>
 					<!-- <img src="@routes.Assets.at("images/btn_vote.png")"> -->

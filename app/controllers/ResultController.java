@@ -17,7 +17,12 @@ public class ResultController extends Controller {
 	static CriteriaCalculator crankings = new CriteriaCalculator();
 			
 	public static Result results() {
-		return ok(views.html.results.render(User.findByUsername(request().username())));	
+		if(User.getUserTypeId(User.findByUsername(request().username())) != 9) {
+			return ok(views.html.results.render(User.findByUsername(request().username())));
+		}
+		else {
+			return ok(views.html.adminResult.render(User.findByUsername(request().username())));
+		}
 	}
 
 

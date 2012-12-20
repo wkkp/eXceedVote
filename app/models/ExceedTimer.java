@@ -1,26 +1,27 @@
 package models;
 
 import java.util.*;
-import java.util.Timer;
-import java.util.TimerTask;
+import javax.persistence.*;
 
-class ExceedTimer {
+import play.db.ebean.*;
+import play.data.format.*;
+import play.data.validation.*;
 
+public class ExceedTimer extends Model {
+
+	@Id
+	public Integer id;
+	public int day;
 	public int hour;
 	public int minute;
 	public int second;
 
-	public Timer timer;
+	private static final long serialVersionUID = 1L;
 
-	public ExceedTimer(int hour, int minute, int second) {
-		timer = new Timer();
-		timer.schedule(new RemindTask(), hour*60*60*1000 + minute*60*1000 + second*1000);
-	}
+	public static Finder<Integer,ExceedTimer> find = new Finder(Integer.class, ExceedTimer.class);
 
-	class RemindTask extends TimerTask {
-		public void run() {
-			timer.cancel();
-		}
+	public ExceedTimer() {
+	
 	}
 
 }
