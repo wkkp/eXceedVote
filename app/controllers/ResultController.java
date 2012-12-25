@@ -18,10 +18,13 @@ public class ResultController extends Controller {
 			
 	public static Result results() {
 		if(User.getUserTypeId(User.findByUsername(request().username())) != 9) {
-			return ok(views.html.results.render(User.findByUsername(request().username())));
+			return ok(views.html.results.render(User.findByUsername(request().username())
+											  , ExceedTimer.getTimer())
+			);
 		}
 		else {
-			return ok(views.html.adminResult.render(User.findByUsername(request().username())));
+			return ok(views.html.adminResult.render(User.findByUsername(request().username()))
+			);
 		}
 	}
 

@@ -1,4 +1,4 @@
-@(title: String, user: User)(content: Html)
+@(title: String, user: User, ext: ExceedTimer)(content: Html)
 @import helper._
 <!DOCTYPE html>
 
@@ -26,8 +26,15 @@
 	<script type="text/javascript">
 
 	$(function () {
+<<<<<<< HEAD
 		if (new Date() - new Date(2012, 12-1, 20, 12, 13, 30, 00) < 0)
 			setTimeout(function(){$('#nav-results').show(); $('#nav-vote').hide();},(Math.abs(new Date() - new Date(2012, 12-1, 20, 12, 13, 30, 00))));
+=======
+
+		var austDay = new Date(@ext.year, @ext.month, @ext.day, @ext.hour, @ext.minute, @ext.second);
+		if (new Date() - austDay < 0)
+			setTimeout(function(){$('#nav-results').show(); $('#nav-vote').hide();},(Math.abs(new Date() - austDay)));
+>>>>>>> add timer setting
 		else {
 			$('#nav-results').show();
 			$('#nav-vote').hide();

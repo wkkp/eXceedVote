@@ -1,10 +1,10 @@
-@(projects:List[Project], criteria:List[Criteria], projectForm: Form[Project],ballotForm: Form[Ballot], user: User, boxForm: Form[BallotBox])
+@(projects:List[Project], criteria:List[Criteria], projectForm: Form[Project],ballotForm: Form[Ballot], user: User, boxForm: Form[BallotBox], ext: ExceedTimer)
 
 @import helper._
 
 <!DOCTYPE html>
 
-@main("Vote", "Vote for projects", user) {
+@main("Vote", "Vote for projects", user, ext) {
 <body id="vote">
 <script type="text/javascript">
 	var pjid;

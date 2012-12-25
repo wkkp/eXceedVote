@@ -1,7 +1,7 @@
-@(projects: List[Project], user: User)
+@(projects: List[Project], user: User, ext: ExceedTimer)
 
 @import helper._
-     @main("Projects", "All exceed projects", user) {
+     @main("Projects", "All exceed projects", user, ext) {
 
 
 <script type="text/javascript" src="@routes.Assets.at("stylesheets/highslide-with-gallery.js")"></script>
