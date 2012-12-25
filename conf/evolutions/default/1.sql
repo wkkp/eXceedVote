@@ -18,6 +18,17 @@ create table criteria (
   constraint pk_criteria primary key (cid))
 ;
 
+create table exceedtimer (
+  id                        bigint auto_increment not null,
+  year                      integer,
+  month                     integer,
+  day                       integer,
+  hour                      integer,
+  minute                    integer,
+  second                    integer,
+  constraint pk_exceedtimer primary key (id))
+;
+
 create table project (
   pid                       bigint auto_increment not null,
   name                      varchar(255),
@@ -60,6 +71,8 @@ SET FOREIGN_KEY_CHECKS=0;
 drop table ballot;
 
 drop table criteria;
+
+drop table exceedtimer;
 
 drop table project;
 

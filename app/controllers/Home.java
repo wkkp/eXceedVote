@@ -29,7 +29,9 @@ public class Home extends Controller {
 
     	else{
 			return ok(home.render(
-			User.findByUsername(request().username()),ts ) 
+			User.findByUsername(request().username())
+							  , ts
+							  , ExceedTimer.getTimer()) 
 			);
 		}
 	}

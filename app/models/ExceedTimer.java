@@ -1,26 +1,54 @@
 package models;
 
 import java.util.*;
-import java.util.Timer;
-import java.util.TimerTask;
+import javax.persistence.*;
 
-class ExceedTimer {
+import play.db.ebean.*;
+import play.data.format.*;
+import play.data.validation.*;
 
+@Entity
+@Table(name="exceedtimer")
+public class ExceedTimer extends Model {
+
+	@Id
+	public Long id;
+	public int year;
+	public int month;
+	public int day;
 	public int hour;
 	public int minute;
 	public int second;
 
-	public Timer timer;
+	private static final long serialVersionUID = 1L;
 
-	public ExceedTimer(int hour, int minute, int second) {
-		timer = new Timer();
-		timer.schedule(new RemindTask(), hour*60*60*1000 + minute*60*1000 + second*1000);
+	public static Finder<Long, ExceedTimer> find = new Finder(Long.class, ExceedTimer.class);
+
+	public ExceedTimer() {
+	
 	}
 
-	class RemindTask extends TimerTask {
-		public void run() {
-			timer.cancel();
+	public static ExceedTimer getTimer() {
+
+		if (find.where().eq("id", Long.valueOf(1)).findUnique() == null) {
+			System.out.println("check");
+			ExceedTimer ext = new ExceedTimer();
+			ext.id = Long.valueOf(1);
+			ext.year = 2013;
+			ext.month = 1;
+			ext.day = 1;
+			ext.hour = 12;
+			ext.minute = 30;
+			ext.second = 30;
+			ext.save();
 		}
+
+		return find.where().eq("id", Long.valueOf(1)).findUnique();
+
 	}
 
+	public static void saveTimer(ExceedTimer ext) {
+		ext.id = Long.valueOf(1);
+		ext.update();
+	}
 }

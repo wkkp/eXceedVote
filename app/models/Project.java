@@ -1,11 +1,13 @@
 package models;
 
 import java.util.*;
+import javax.persistence.*;
 
 import play.db.ebean.*;
-import play.data.validation.Constraints.*;
+import play.data.format.*;
+import play.data.validation.*;
 
-import javax.persistence.*;
+
 /*
 	Information and structure of each project.
  */
@@ -19,9 +21,9 @@ public class Project extends Model {
 	public String name;
 	@Column(columnDefinition = "TEXT")
 	public String description;
+	
 	public String imageUrl;
 	public String imageUrl2;
-	
 	private static final long serialVersionUID = 1L;
 
 	public static Finder<Long, Project> find = new Finder(Long.class, Project.class);
@@ -33,6 +35,7 @@ public class Project extends Model {
 	public static List<Project> findAllProject(){
 		return find.all();
 	}
+	
     /*
 	*
 	*	Check if this project is exist in database.
@@ -60,7 +63,7 @@ public class Project extends Model {
 	}
 
 	public static Project getProject(Long pid){
-		 Project p = find.where()
+		Project p = find.where()
 	    	         .eq("pid", pid)
 	            	 .findUnique();
 		return p;

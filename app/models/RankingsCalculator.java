@@ -1,8 +1,9 @@
 package models;
 
 import java.util.*;
+import play.db.ebean.*;
 
-public class RankingsCalculator {
+public class RankingsCalculator extends Model {
 
 	static List<Project> projects;
 	static Long[][] rank;
@@ -17,10 +18,10 @@ public class RankingsCalculator {
 		index = 0;
 		for (Project p : projects) {
 			List<Ballot> ballots = Ballot.getBallotsById(p.pid);
-			rank[index][0] = p.pid;
-			rank[index][1] = Long.valueOf(ballots.size());
-			rank[index][2] = Long.valueOf(index+1);
-			index++;
+				rank[index][0] = p.pid;
+				rank[index][1] = Long.valueOf(ballots.size());
+				rank[index][2] = Long.valueOf(index+1);
+				index++;
 		}	
 	}
 
