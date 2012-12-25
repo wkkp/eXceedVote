@@ -3,9 +3,37 @@
 @import helper._
 
 @adminMain("Users Manager", "Manage the users", user) {
-	<div class="container" align="center">
+<style type="text/css">
+		
+		.form-signin {
+			max-width: 300px;
+			padding: 19px 29px 29px;
+			margin: 0 auto 20px;
+			background-color: #F0EEEE;
+			border: 1px solid #e5e5e5;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+			box-shadow: 0 1px 2px rgba(0,0,0,.05);
+		}
+		.form-signin .form-signin-heading,
+		.form-signin .checkbox {
+			margin-bottom: 10px;
+		}
+		.form-signin input[type="text"],
+		.form-signin input[type="password"] {
+			font-size: 16px;
+			height: auto;
+			margin-bottom: 15px;
+			padding: 7px 9px;
+		}
+		</style>
+<body id="usermanager">
+	<div class="container" align="center" style="margin-top: 50px;">
 
-			<div class="span6" style="margin-top:20px;margin-left:100px">
+			<div class="span6" >
 				@form(routes.UserController.newUser(), 'class -> "form-signin"){
 					<h2 class="form-signin-heading">Add user</h2>
 					
@@ -19,7 +47,7 @@
 					</div>
 				}
 				</div>
-			<div class="span8" style="margin-left:100px">
+			<div class="span8">
 			<h2>@users.size() user(s)</h2>
 			<table class="table table-striped">
 				<thead>
@@ -41,7 +69,7 @@
 						<td>@u.password</td>
 						<td>
 							@form(routes.UserController.getUser(u.uid)) {
-								<button type="submit" class="btn btn-danger">Edit</input>
+								<button type="submit" class="btn btn-warning">Edit</input>
 							}
 						</td>
 						<td>
@@ -54,5 +82,6 @@
 
 				</tbody>  
 			</table>
-		</div>	
+		</div>
+</body>	
 }

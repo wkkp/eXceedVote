@@ -39,8 +39,10 @@ public class ProjectController extends Controller {
  		}
 
     	else
- 			 return ok(projectlist.render(Project.findAllProject()
- 			 		, User.findByUsername(request().username())));	
+ 			return ok(projectlist.render(Project.findAllProject()
+ 			 		, User.findByUsername(request().username())
+ 			 		, ExceedTimer.getTimer())
+ 			);	
 	}
   	
 	public static Result addProject() {

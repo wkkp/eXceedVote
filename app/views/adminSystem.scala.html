@@ -1,9 +1,40 @@
-@(user: User)
+@(user: User, exceedTimer: ExceedTimer, etform: Form[ExceedTimer])
 
 @import helper._
 
 @adminMain("System Preferences", "", user) {
+<body id="system">
 	<div class="container">
 		<h1>Timer Setting</h1>
 	</div>
+
+	<div class="container">
+		<fieldset>
+		@form(routes.SystemController.saveNewTimer()) {
+			<span>
+			<label for="year">Year</label>
+			<input class="span1" name="year" id="year" type="number" min="-9999" max="9999" step="1" value="@exceedTimer.year" placeholder="yaer">
+			<label for="month">Month</label>
+			<input class="span1" name="month" id="month" type="number" min="1" max="12" step="1" value="@exceedTimer.month" placeholder="month">
+			<label for="day">Date</label>
+			<input class="span1" name="day" id="day" type="number" min="1" max="31" step="1" value="@exceedTimer.day" placeholder="day">
+			</span>
+			<br>
+			<span>
+			<label for="hour">Hour</label>
+			<input class="span1" name="hour" id="hour" type="number" min="0" max="23" step="1" value="@exceedTimer.hour" placeholder="hour">
+			<label for="minute">Minute</label>
+			<input class="span1" name="minute" id="minute" type="number" min="0" max="60" step="1" value="@exceedTimer.minute" placeholder="minute">
+			<label for="second">Second</label>
+			<input class="span1" name="second" id="second" type="number" min="0" max="60" step="1" value="@exceedTimer.second" placeholder="second">
+			</span>
+			<br>
+			<br>
+
+			<button type="submit" class="btn btn-primary">Save</input>
+		}
+		</fieldset>
+	</div>
+
+</body>
 }

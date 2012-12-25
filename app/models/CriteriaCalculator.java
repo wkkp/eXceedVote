@@ -1,8 +1,9 @@
 package models;
 
 import java.util.*;
+import play.db.ebean.*;
 
-public class CriteriaCalculator {
+public class CriteriaCalculator extends Model {
 	
 	static List<Project> projects;
 	static List<Criteria> criteria;

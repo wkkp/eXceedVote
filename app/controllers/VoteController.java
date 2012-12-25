@@ -38,7 +38,8 @@ public class VoteController extends Controller {
   				      , projectForm
   				      , ballotForm
   				      , User.findByUsername(request().username())
-  				      , boxForm)
+  				      , boxForm
+  				      , ExceedTimer.getTimer())
   					);
 		}
 	}
@@ -49,7 +50,8 @@ public class VoteController extends Controller {
 				      , projectForm
 				      , ballotForm
 				      , User.findByUsername(request().username())
-				      , boxForm)
+				      , boxForm
+				      , ExceedTimer.getTimer())
 		);
 	}
 
